@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 저장하기</title>
+
+    <link rel="stylesheet" href="https://webfontworld.github.io/gmarket/GmarketSans.css">
+    <link rel="stylesheet" href="https://websfont.github.io/nanumSquareNeo/nanumSquareNeo.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/default.min.css">
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <h1>
+                <a href="index.html">javascript</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li class="active"><a href="javascript01.html">데이터 저장하기</a></li>
+                    <li><a href="javascript02.html">데이터 불러오기</a></li>
+                    <li><a href="javascript03.html">데이터 실행하기</a></li>
+                    <li><a href="javascript04.html">데이터 제어하기</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- //header -->
+
+        <main id="main">
+            <div class="main__menu">
+                <ul>
+                    <li><a href="#">01. 변수 : 데이터 저장</a></li>
+                    <li><a href="#">02. 변수 : 데이터 저장 + 데이터 변경</a></li>
+                    <li><a href="#">03. 변수 : 데이터 저장 + 데이터 변경 + 데이터 추가</a></li>
+                    <li><a href="#">04. 상수 : 데이터 저장 + 데이터 변경(X)</a></li>
+                    <li><a href="#">05. 배열 : 데이터 저장(여러개) : 표현방법1 : 배열 선언 </a></li>
+                    <li><a href="#">06. 배열 : 데이터 저장(여러개) : 표현방법2 : 배열 선언과 동시에 초깃값 설정</a></li>
+                    <li><a href="#">07. 배열 : 데이터 저장(여러개) : 표현방법3 : 리터럴 방식으로 배열 선언</a></li>
+                    <li><a href="#">08. 배열 : 데이터 저장(여러개) : 표현방법4 : 리터럴 방식으로 배열 선언과 동시에 초깃값 설정</a></li>
+                    <li><a href="#">09. 배열 : 데이터 저장(여러개) : 표현방법5 : 배열 구조 분해 할당</a></li>
+                    <li><a href="#">10. 배열 : 데이터 저장(여러개) : 표현방법5 : 배열 펼침연산자</a></li>
+                    <li><a href="#">11. 객체 : 데이터 저장(키와값) : 표현방법1 : 객체 선언 후 배열 방식으로 데이터 입력</a></li>
+                    <li><a href="#">12. 객체 : 데이터 저장(키와값) : 표현방법2 : 객체 선언 후 객체 방식으로 데이터 입력</a></li>
+                    <li><a href="#">13. 객체 : 데이터 저장(키와값) : 표현방법3 : 리터럴 방식으로 객체 선언</a></li>
+                    <li><a href="#">14. 객체 : 데이터 저장(키와값) : 표현방법4 : 리터럴 방식으로 객체 선언과 동시에 초깃값을 설정</a></li>
+                    <li><a href="#">15. 객체 : 데이터 저장(키와값) : 표현방법5 : 배열안에 객체가 있는 방식</a></li>
+                    <li><a href="#">16. 객체 : 데이터 저장(키와값) : 표현방법6 : 객체안에 배열이 있는 방식</a></li>
+                    <li><a href="#">17. 객체 : 데이터 저장(키와값) : 표현방법7 : 객체안에 객체가 있는 방식</a></li>
+                    <li><a href="#">18. 객체 : 데이터 저장(키와값) : 표현방법8 : 객체 + 함수가 있는 방식</a></li>
+                    <li><a href="#">19. 객체 : 데이터 저장(키와값) : 표현방법9 : 객체 구조 분해 할당</a></li>
+                    <li><a href="#">20. 객체 : 데이터 저장(키와값) : 표현방법9 : 객체 펼침연산자</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">++ 연산자</a></li>
+                </ul>
+            </div>
+            <!-- //main__menu -->
+
+            <div class="main__sample">
+                <div id="sample01" class="sample">
+                    <h3>01. 변수 : 데이터 저장소</h3>
+                    <p>자바스크립트(JavaScript)에서 변수는 데이터를 저장하는 저장소입니다.</p>
+<pre><code class="language-js">{
+    var x = 100;            // 변수 x에 숫자 100을 저장
+    var y = 200;            // 변수 y에 숫자 200을 저장
+    var z = "javascript";   // 변수 z에 문자 javascript를 저장
+
+    console.log(x);
+    console.log(y);
+    console.log(z);
+}
+</code></pre>
+                    <p class="desc">var: 과거에 사용되던 변수 선언 방식으로, 현재는 잘 사용하지 않습니다.</p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                100<br>
+                                200<br>
+                                javascript
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample01 -->
+
+                <div id="sample02" class="sample">
+                    <h3>02. 변수 : 데이터 저장 + 데이터 변경</h3>
+                    <p>자바스크립트(JavaScript)에서 변수는 데이터를 저장하고 변경할 수 있습니다.</p>
+<pre><code class="language-js">{
+    let x = 100;            // 변수 x에 숫자 100을 저장
+    let y = 200;            // 변수 y에 숫자 200을 저장
+    let z = "javascript";   // 변수 z에 문자 javascript를 저장
+
+    x = 300;        // 변수 x에 값을 숫자 300으로 변경
+    y = 400;        // 변수 y에 값을 숫자 400으로 변경
+    z = "jquery";   // 변수 z에 값을 문자 jquery로 변경
+
+    console.log(x);
+    console.log(y);
+    console.log(z);
+}
+</code></pre>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                100
+                                200
+                                javascript
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample02 -->
+
+                <div id="sample03" class="sample">
+                    <h3>03. 변수 : 데이터 저장 + 데이터 변경 + 데이터 추가</h3>
+                    <p>자바스크립트(JavaScript)에서 변수는 데이터를 저장하고 변경하고, 추가할 수 있습니다.</p>
+<pre><code class="language-js">{
+    let x = 100;
+    let y = 200;
+    let z = "javascript";
+
+    x += 100;            // x = x + 100;
+    y += 100;            // y = y + 100;
+    z += "jquery";       // z = z + "jquery";
+
+    console.log(x);
+    console.log(y);
+    console.log(z);
+}
+</code></pre>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                100
+                                300
+                                javascriptjquery
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample03 -->
+            </div>
+            <!-- //main__sample -->
+        </main>
+        <!-- //main -->
+
+        <footer id="footer">
+            <a href="mailto:webstoryboy@naver.com">webstoryboy@naver.com</a>
+        </footer>
+        <!-- //footer -->
+    </div>
+
+    <!-- script -->
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <script>
+        // 01. 변수 : 데이터 저장
+        // 02. 변수 : 데이터 저장 + 데이터 변경
+        // 03. 변수 : 데이터 저장 + 데이터 변경 + 데이터 추가
+        // 04. 상수 : 데이터 저장 + 데이터 변경(X)
+        // 05. 배열 : 데이터 저장(여러개) : 표현방법1 : 배열 선언 
+        // 06. 배열 : 데이터 저장(여러개) : 표현방법2 : 배열 선언과 동시에 초깃값 설정
+        // 07. 배열 : 데이터 저장(여러개) : 표현방법3 : 리터럴 방식으로 배열 선언
+        // 08. 배열 : 데이터 저장(여러개) : 표현방법4 : 리터럴 방식으로 배열 선언과 동시에 초깃값 설정
+        // 09. 배열 데이터저장(여러개) 표현방법5 : 2차 배열
+        // 11. 배열 : 데이터 저장(여러개) : 표현방법5 : 배열 펼침연산자
+        // 12. 객체 : 데이터 저장(속성과 메서드) : 표현방법1 : 객체 선언 후 배열 방식으로 데이터 입력
+        // 13. 객체 : 데이터 저장(속성과 메서드) : 표현방법2 : 객체 선언 후 객체 방식으로 데이터 입력
+        // 14. 객체 : 데이터 저장(속성과 메서드) : 표현방법3 : 리터럴 방식으로 객체 선언
+        // 15. 객체 : 데이터 저장(속성과 메서드) : 표현방법4 : 리터럴 방식으로 객체 선언과 동시에 초깃값을 설정
+        // 16. 객체 : 데이터 저장(속성과 메서드) : 표현방법5 : 배열안에 객체가 있는 방식
+        // 17. 객체 : 데이터 저장(속성과 메서드) : 표현방법6 : 객체안에 배열이 있는 방식
+        // 18. 객체 : 데이터 저장(속성과 메서드) : 표현방법7 : 객체안에 객체가 있는 방식 
+        // 19. 객체 : 데이터 저장(속성과 메서드) : 표현방법8 : 객체 + 함수가 있는 방식
+        // 20. 객체 : 데이터 저장(속성과 메서드) : 표현방법9 : 객체 구조 분해 할당
+        // 21. 객체 : 데이터 저장(속성과 메서드) : 표현방법9 : 객체 펼침연산자
+
+        // 01. 변수 : 데이터 저장
+        {
+            let x = 100;
+            let y = 200;
+            let z = "js";
+            
+            console.log(x);
+            console.log(y);
+            console.log(z);
+        }
+        
+        // 02. 변수 : 데이터 저장 + 데이터 변경
+        {
+            let x = 100;
+            let y = 200;
+            let z = "js";
+
+            x = 200;
+            y = 400;
+            z = "jq";
+            
+            console.log(x);
+            console.log(y);
+            console.log(z);
+        }
+        // 03. 변수 : 데이터 저장 + 데이터 변경 + 데이터 추가
+        
+        // 04. 상수 : 데이터 저장 + 데이터 변경(X)
+        // 05. 배열 : 데이터 저장(여러개) : 표현방법1 : 배열 선언 
+        // 06. 배열 : 데이터 저장(여러개) : 표현방법2 : 배열 선언과 동시에 초깃값 설정
+        // 07. 배열 : 데이터 저장(여러개) : 표현방법3 : 리터럴 방식으로 배열 선언
+        // 08. 배열 : 데이터 저장(여러개) : 표현방법4 : 리터럴 방식으로 배열 선언과 동시에 초깃값 설정
+        // 09. 배열 데이터저장(여러개) 표현방법5 : 2차 배열
+        // 11. 배열 : 데이터 저장(여러개) : 표현방법5 : 배열 펼침연산자
+        // 12. 객체 : 데이터 저장(속성과 메서드) : 표현방법1 : 객체 선언 후 배열 방식으로 데이터 입력
+        // 13. 객체 : 데이터 저장(속성과 메서드) : 표현방법2 : 객체 선언 후 객체 방식으로 데이터 입력
+        // 14. 객체 : 데이터 저장(속성과 메서드) : 표현방법3 : 리터럴 방식으로 객체 선언
+        // 15. 객체 : 데이터 저장(속성과 메서드) : 표현방법4 : 리터럴 방식으로 객체 선언과 동시에 초깃값을 설정
+        // 16. 객체 : 데이터 저장(속성과 메서드) : 표현방법5 : 배열안에 객체가 있는 방식
+        // 17. 객체 : 데이터 저장(속성과 메서드) : 표현방법6 : 객체안에 배열이 있는 방식
+        // 18. 객체 : 데이터 저장(속성과 메서드) : 표현방법7 : 객체안에 객체가 있는 방식 
+        // 19. 객체 : 데이터 저장(속성과 메서드) : 표현방법8 : 객체 + 함수가 있는 방식
+        // 20. 객체 : 데이터 저장(속성과 메서드) : 표현방법9 : 객체 구조 분해 할당
+        // 21. 객체 : 데이터 저장(속성과 메서드) : 표현방법9 : 객체 펼침연산자
+
+        // ++ 지역변수/전역변수
+        // ++ 연산자(산술/대입/증감/비교/논리/비트)
+        // ++ 자료형(숫자/문자열/논리/null/undefined/Object/Array/Function)
+
+        // 01. 변수 : 데이터 불러오기
+        // 02. 상수 : 데이터 불러오기
+        // 03. 배열 : 데이터 불러오기
+        // 04. 배열 : 데이터 불러오기 + 갯수
+        // 05. 배열 : 데이터 불러오기 : for()
+        // 06. 배열 : 데이터 불러오기 : 중첩 for()
+        // 07. 배열 : 데이터 불러오기 : forEach()
+        // 08. 배열 : 데이터 불러오기 : for of
+        // 09. 배열 : 데이터 불러오기 : for in
+        // 10. 배열 : 데이터 불러오기 : map()
+
+        // 01. if문
+        // 02. 다중 if문
+        // 03. 중첩 if문
+        // 04. if문 생략
+        // 05. switch문
+        // 06. while문
+        // 07. do while문
+        // 08. for문
+        // 09. break문
+        // 10. continue문
+
+
+
+    </script>
+</body>
+</html>

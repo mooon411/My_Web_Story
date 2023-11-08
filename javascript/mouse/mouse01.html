@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 이펙트</title>
+
+    <link rel="stylesheet" href="css/mouse.css">
+    <style>
+        .mouse_wrap {
+            cursor: none;
+        }
+
+        .mouse_cursor {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #ff9100;
+            background-color: #ffaf8156;
+            backdrop-filter: blur(1px);
+            user-select: none;
+            pointer-events: none;
+            cursor: none;
+            transition: background-color 0.4s,
+                        border 0.3s,
+                        transform 0.3s,
+                        border-radius 0.4s;
+        }
+
+        .mouse_cursor.s1 {
+            border: 2px solid #a6ff00;
+            background-color: #ecff814b;
+        }
+        .mouse_cursor.s2 {
+            border: 2px solid #ff0000;
+            background-color: #ffd7a24b;
+            transform: scale(2) rotateY(360deg);
+        }
+        .mouse_cursor.s3 {
+            border: 2px solid #001aff;
+            background-color: #a4fff74b;
+            transform: scale(1.5) rotateX(720deg);
+        }
+        .mouse_cursor.s4 {
+            border: 2px solid #e45cff;
+            background-color: #fcb1ff4b;
+            transform: scale(10);
+        }
+        .mouse_cursor.s5 {
+            border: 2px solid #00ffdd;
+            background-color: #c7ffff4b;
+            transform: skew(140deg);
+        }
+        .mouse_cursor.s6 {
+            border: 0;
+            background-color: #ffb2f54b;
+            border-radius: 0;
+            transform: scale(5);
+        }
+
+
+        .mouse_text {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .mouse_text p {
+            color: #fff;
+            font-size: 2vw;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .mouse_text p span {
+            color: #ff9100;
+            border-bottom: 1px dashed #ffe8c9;
+            cursor: pointer;
+        }
+
+        .mouse_info {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="img01">
+    <header id="header">
+        <h1>Javascript mouse Effect01</h1>
+        <p>마우스 이펙트 - 마우스 따라다니기</p>
+        <ul>
+            <li class="active"><a href="mouse01.html">1</a></li>
+            <li><a href="mouse02.html">2</a></li>
+            <li><a href="mouse03.html">3</a></li>
+            <li><a href="mouse04.html">4</a></li>
+            <li><a href="mouse05.html">5</a></li>
+            <li><a href="mouse06.html">6</a></li>
+        </ul>
+    </header>
+    <main id="main">
+        <div class="mouse_wrap">
+            <div class="mouse_cursor"></div>
+            <div class="mouse_text">
+                <p><span class="s1">Courage</span> is very <span class="s2">important</span> when it comes to<span class="s3">anything.</span></p>
+                <p><span class="s4">어떤 것</span> 이든지 <span class="s5">용기</span>는 정말 <span class="s6">중요하다.</span></p>
+            </div>
+        </div>
+    </main>
+    <div class="mouse_info">
+        <ul>
+            <li>clientX <span class="clientX">0</span>px</li>
+            <li>clientY <span class="clientY">0</span>px</li>
+            <li>offsetX <span class="offsetX">0</span>px</li>
+            <li>offsetY <span class="offsetY">0</span>px</li>
+            <li>pageX <span class="pageX">0</span>px</li>
+            <li>pageY <span class="pageY">0</span>px</li>
+            <li>screenX <span class="screenX">0</span>px</li>
+            <li>screenY <span class="screenY">0</span>px</li>
+        </ul>
+    </div>
+    <script>
+        window.addEventListener("mousemove", () => {
+            document.querySelector(".clientX").innerHTML = event.clientX;
+            document.querySelector(".clientY").innerHTML = event.clientY;
+            document.querySelector(".offsetX").innerHTML = event.offsetX;
+            document.querySelector(".offsetY").innerHTML = event.offsetY;
+            document.querySelector(".pageX").innerHTML = event.pageX;
+            document.querySelector(".pageY").innerHTML = event.pageY;
+            document.querySelector(".screenX").innerHTML = event.screenX;
+            document.querySelector(".screenY").innerHTML = event.screenY;
+        });
+
+        //선택자
+        const mouseCursor = document.querySelector(".mouse_cursor");
+
+        //마우스 좌표값을 커서에 할당
+        window.addEventListener("mousemove", (e) => {
+            mouseCursor.style.left = e.clientX - 25 + "px";
+            mouseCursor.style.top = e.clientY - 25 + "px";
+        });
+
+
+        // // for문
+        // for (let i = 1; i <= 8; i++) {
+        //     document.querySelector(".s"+i).addEventListener("mouseover", () => {
+        //         mouseCursor.classList.add("s"+i);
+        //     });
+        //     document.querySelector(".s"+i).addEventListener("mouseout", () => {
+        //         mouseCursor.classList.remove("s"+i);
+        //     });
+        // }
+
+        // forEach문
+        document.querySelectorAll(".mouse_text span").forEach((span, num) => {
+
+            span.addEventListener("mouseover", () => {
+                mouseCursor.classList.add("s"+ (num + 1));
+            });
+            span.addEventListener("mouseout", () => {
+                mouseCursor.classList.remove("s"+ (num + 1));
+            });
+        });
+    </script>
+</body>
+
+</html>

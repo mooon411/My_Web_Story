@@ -1,0 +1,31 @@
+:root {
+    --main-nanum: "NanumSquareNeo";
+    --main-Rebecca: "Rebecca";
+
+    /* --primary-color: #c5b7bd; */
+    --primary-color: #dfd5da;
+    --primary-color100: #ad95a1;
+    --primary-color200: #d7c4cd;
+    --mainLine: #443c40;
+
+    --black: #000;
+    --white: #fff;
+    --red: #db1d1d;
+    --mcolor: #393939;
+
+    --black100: #333;
+    --black200: #555;
+    --black300: #777;
+    --black400: #999;
+    --black500: #d7d7d7;
+
+    font-size: var(--font__size);
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+@media (max-width: 800px){
+    :root {
+    font-size: 14px;
+    }
+}

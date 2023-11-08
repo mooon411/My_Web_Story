@@ -1,0 +1,233 @@
+/* 폰트 */
+@font-face {
+    font-family: "nanumSquareNeo";
+    font-weight: 400;
+    font-style: normal;
+    src: url("https://cdn.jsdelivr.net/gh/websfont/nanumSquareNeo/nanumSquareNeo-Regular.eot");
+    src: url("https://cdn.jsdelivr.net/gh/websfont/nanumSquareNeo/nanumSquareNeo-Regular.eot?#iefix") format("embedded-opentype"),
+         url("https://cdn.jsdelivr.net/gh/websfont/nanumSquareNeo/nanumSquareNeo-Regular.woff2") format("woff2"),
+         url("https://cdn.jsdelivr.net/gh/websfont/nanumSquareNeo/nanumSquareNeo-Regular.woff") format("woff"),
+         url("https://cdn.jsdelivr.net/gh/websfont/nanumSquareNeo/nanumSquareNeo-Regular.ttf") format("truetype");
+    font-display: swap;
+} 
+
+/* 여백 */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+fieldset,
+form,
+legend,
+p,
+blockquote,
+th,
+tr,
+td,
+input,
+select,
+button,
+figure,
+figcaption {
+    margin: 0;
+    padding: 0;
+}
+
+/* 시멘틱 태그 불럭화 */
+section,
+aside,
+article,
+header,
+nav {
+    display: block;
+}
+
+/* 폰트 초기화 */
+body,
+button,
+input,
+select,
+table,
+textarea {
+    font-family: "nanumSquareNeo", "Malgun Gothic", "맑은 고딕", Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+/* 링크초기화 */
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* 제목 초기화 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    font-size: 16px;
+}
+/* 리스트 */
+ul, li, ol {
+    list-style: none;
+}
+
+/* 폰트 스타일 초기화 */
+em, address {
+    font-style: normal;
+}
+/* image */
+img {
+    width: 100%;
+    vertical-align: top;
+}
+/* 이미지 대체(IR) 효과 */
+.ir {
+    display: block;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0;
+    text-indent: -9999px;
+}
+
+
+
+
+/* css */
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 240, 243);
+    position: relative;
+}
+.quiz_box {
+    width: 40%;
+    height: auto;
+    background-color: #fff;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #eee;
+}
+.quiz_title {
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: #5e2c52;
+    border-radius: 20px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.question {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+.quiz_choice {
+    margin-top: 15px;
+}
+.quiz_choice label {
+    display: flex;
+}
+.quiz_choice input {
+    position: absolute;
+    left: -9999px;
+}
+.quiz_choice label span {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px 10px 8px 30px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #444;
+    position: relative;
+}
+.quiz_choice label span::before {
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    margin-right: 15px;
+    box-shadow: inset 0px 0px 0px 1px #5e2c52;
+    transition: all 0.25s;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+    font-family: 'Helvetica Neue';
+}
+.quiz_choice label:nth-of-type(1) span::before {
+    content: '1';
+} 
+.quiz_choice label:nth-of-type(2) span::before {
+    content: '2';
+} 
+.quiz_choice label:nth-of-type(3) span::before {
+    content: '3';
+} 
+.quiz_choice label:nth-of-type(4) span::before {
+    content: '4';
+} 
+.quiz_choice label input:checked + span {
+    color: #5e2c52;
+}
+.quiz_choice input:checked + label span::before {
+    box-shadow: inset 0px 0px 0px 10px #5e2c52;
+    color: #fff;
+}
+.quiz_choice label.good span::before {
+    box-shadow: inset 0px 0px 0px 10px rgb(255, 0, 0);
+    color: #fff;
+}
+
+.quiz_answer {
+    border: 1px solid #f2f2f2;
+    padding: 10px 20px 10px 88px;
+    background-color: #fafafa;
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.6;
+    position: relative;
+}
+.quiz_answer::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23412E91' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cline x1='96' y1='128' x2='160' y2='128' fill='none' stroke='%23412E91' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3Cline x1='96' y1='160' x2='160' y2='160' fill='none' stroke='%23412E91' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3Cpath d='M56,40H200a8,8,0,0,1,8,8V200a24,24,0,0,1-24,24H72a24,24,0,0,1-24-24V48A8,8,0,0,1,56,40Z' fill='none' stroke='%23412E91' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/path%3E%3Cline x1='80' y1='24' x2='80' y2='56' fill='none' stroke='%23412E91' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3Cline x1='128' y1='24' x2='128' y2='56' fill='none' stroke='%23412E91' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3Cline x1='176' y1='24' x2='176' y2='56' fill='none' stroke='%23412E91' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'%3E%3C/line%3E%3C/svg%3E");
+    background-size: cover;
+}
+.quiz_answer::after {
+    content: '정답은 : ';
+    position: absolute;
+    left: 35px;
+    top: 10px;
+}
+
+
+.none {
+    display: none;
+}

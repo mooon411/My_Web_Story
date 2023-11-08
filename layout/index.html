@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 연습</title>
+
+    <link href="https://webfontworld.github.io/score/SCoreDream.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: black;
+            font-family: "SCoreDream";
+            font-weight: 400;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        #wrap {
+            display: flex;
+        }
+        #nav {
+            width: 300px;
+            padding: 20px;
+        }
+        #nav li a {
+            border: 1px solid rgb(5, 41, 23);
+            display: block;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+        #nav li a:hover {
+            background-color: rgb(62, 124, 124);
+            color: rgb(190, 226, 220);
+        }
+        #nav .webd {
+            margin-top: 50px;
+        }
+        #nav .webd li {
+            width: 59px;
+            display: inline-block;
+            text-align: center;
+        }
+        #main {
+            width: 100%;
+            min-height: 100vh;
+        }
+        #main iframe{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <nav id="nav">
+            <ul>
+                <li><a href="layout01.html">Layout01</a></li>
+                <li><a href="layout02.html">Layout02</a></li>
+                <li><a href="layout03.html">Layout03</a></li>
+                <li><a href="layout03-float.html">Layout03 - float</a></li>
+                <li><a href="layout04.html">Layout04</a></li>
+                <li><a href="layout05.html">Layout05</a></li>
+            </ul>
+            <ul class="webd">
+                <li><a href="a-1.html">A-1</a></li>
+                <li><a href="a-2.html">A-2</a></li>
+                <li><a href="a-3.html">A-3</a></li>
+                <li><a href="a-4.html">A-4</a></li>
+                <li><a href="b-1.html">B-1</a></li>
+                <li><a href="b-2.html">B-2</a></li>
+                <li><a href="b-3.html">B-3</a></li>
+                <li><a href="b-4.html">B-4</a></li>
+                <li><a href="c-1.html">C-1</a></li>
+                <li><a href="c-2.html">C-2</a></li>
+                <li><a href="c-3.html">C-3</a></li>
+                <li><a href="c-4.html">C-4</a></li>
+                <li><a href="d-1.html">D-1</a></li>
+                <li><a href="d-2.html">D-2</a></li>
+                <li><a href="d-3.html">D-3</a></li>
+                <li><a href="d-4.html">D-4</a></li>
+                <li><a href="e-1.html">E-1</a></li>
+                <li><a href="e-2.html">E-2</a></li>
+                <li><a href="e-3.html">E-3</a></li>
+                <li><a href="e-4.html">E-4</a></li>
+                <li><a href="m-1.html">M-1</a></li>
+                <li><a href="m-2.html">M-2</a></li>
+                <li><a href="m-3.html">M-3</a></li>
+                <li><a href="m-4.html">M-4</a></li>
+                <li><a href="m-5.html">M-5</a></li>
+                <li><a href="m-6.html">M-6</a></li>
+                <li><a href="s-1.html">S-1</a></li>
+                <li><a href="s-2.html">S-2</a></li>
+                <li><a href="s-3.html">S-3</a></li>
+                <li><a href="s-4.html">S-4</a></li>
+                <li><a href="s-5.html">S-5</a></li>
+                <li><a href="s-6.html">S-6</a></li>
+                <li><a href="t-1.html">T-1</a></li>
+                <li><a href="p-1.html">P-1</a></li>
+
+            </ul>
+        </nav>
+        <main id="main">
+            <iframe src="layout01.html" frameborder="0"></iframe>
+        </main>
+        <script>
+            document.querySelectorAll("#nav ul li").forEach((li) => {
+                li.addEventListener("click", (event) => {
+                    event.preventDefault(); //페이지가 넘어가지 않음
+
+                    const href = li.querySelector("a").getAttribute("href");
+                       //alert(href);    //선택한 버튼의 페이지 a
+                    document.querySelector("#main iframe").src = href;
+                });
+            });
+        </script>
+    </div>
+     <!-- //wrap -->
+
+</body>
+</html>

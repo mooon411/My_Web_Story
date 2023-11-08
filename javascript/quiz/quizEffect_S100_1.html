@@ -1,0 +1,1468 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="stylesheet" href="assets/css/animaition.css">
+    <style>
+        .quiz_score {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            width: 70px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: #412e91;
+            color: #fff;
+            text-align: center;
+            line-height: 50px; 
+        }
+    </style>
+    <title>정보처리기능사 시험문제 1</title>
+</head>
+
+<body>
+    <header id="header">
+        <h1><a href="../index.html">Quiz</a></h1>
+        <nav>
+            <ul>
+                <li class="active"><a href="quizEffect_S100_1.html">1</a></li>
+                <li><a href="quizEffect_S100_2.html">2</a></li>
+                <li><a href="quizEffect100.html">0</a></li>
+            </ul>
+            <!-- ul -->
+        </nav>
+        <!-- nav -->
+    </header>
+    <!-- header -->
+    <main id="main">
+        <div class="quiz_wrap">
+        </div>
+        <!-- quizwrap -->
+        <div class="quiz_score">0</div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:danziro97@naver.com">danziro97@naver.com</a>
+    </footer>
+    <!-- footer mail -->
+
+    <div class="modal_wrap">
+        <div class="modal_btn">소스보기</div>
+        <div class="modal_cont">
+            <div class="modal_box">
+                <div class="title">제목</div>
+                <div class="cont">
+<pre><code class="lenguage-js">
+
+</code></pre>
+                </div>
+            </div>
+            <div class="modal_close">
+                <svg width="18" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path d="M12.5 12.5L3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+    <script>
+        // 선택자
+        const quizWrap = document.querySelector(".quiz_wrap");
+        const quizScore = document.querySelector(".quiz_score");
+        let totalScore = 0;
+
+        // 문제 정보
+        const quizInfo = [
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "이항(binary) 연산에 해당하는 것은?",
+                infoChoice : {
+                    1: "COMPLEMENT",
+                    2: "AND",
+                    3: "ROTATE",
+                    4: "SHIFT"
+                },
+                infoAnswer : "2",
+                infoDesc : "단항연산 : ROTATE, SHIFT, MOVE, NOT(COMPLEMENT)"
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "2진수 1011을 그레이코드로 변환하면?",
+                infoChoice : {
+                    1: "1010",
+                    2: "0100",
+                    3: "0111",
+                    4: "1110"
+                },
+                infoAnswer : "4",
+                infoDesc : " 2진수 1011은 그레이 코드로 변환하면 1110이 됩니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리기능사",
+                infoQuestion: "빛을 이용하여 정보를 전송하는 전송 매체는?",
+                infoChoice: {
+                    1: "휴대폰",
+                    2: "전봇대",
+                    3: "광 케이블",
+                    4: "컴퓨터"
+                },
+                infoAnswer: "3",
+                infoDesc: "빛을 이용한 전송 매체는 광 케이블",
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "컴퓨터시스템에서 명령어를 실행하기 위하여 CPU에서 이루어지는 동작 단계의 하나로 기억장치로부터 명령어를 읽어 들이는 단계는?",
+                infoChoice : {
+                    1: "재기록 단계",
+                    2: "해독",
+                    3: "인출 단계",
+                    4: "실행 단계"
+                },
+                infoAnswer : "3",
+                infoDesc : "인출(fetch) 단계 : 명령어를 읽어 들이는 단계"
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "명령어 내의 오퍼랜드 부분의 주소가 실제 데이터의 주소를 가지고 있는 포인터의 주소를 나타내는 방식으로 데이터 처리에 대한 유연성이 좋으나 주소 참조 횟수가 많다는 단점이 있는 주소지정방식은?",
+                infoChoice : {
+                    1: "즉시주소지정",
+                    2: "간접주소지정",
+                    3: "직접주소지정",
+                    4: "계산에 의한 주소지정"
+                },
+                infoAnswer : "2",
+                infoDesc : "접근 방식에 의한 주소지정 묵시적(0)-즉시주소(0)-직접주소(1)-간접주소-(2)/ 메모리 참조 횟수가 많을수록 느리다"
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "현재 수행 중에 있는 명령어 코드(Code)를 저장하고 있는 임시 저장 장치는?",
+                infoChoice : {
+                    1: "명령 레지스터",
+                    2: "인덱스 레지스터",
+                    3: "누산기",
+                    4: "메모리 레지스터"
+                },
+                infoAnswer : "1",
+                infoDesc : "명령 레지스터(Instruction Register) : 현재 실행중인 명령을 기억하는 레지스터"
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음 중 RISC(Reduced Instruction Set Computer)의 설명으로 옳은 것은?",
+                infoChoice : {
+                    1: "주소지정방식이 다양하게 존재한다",
+                    2: "마이크로 코드에 의해 해석 후 명령어를 수행한다.",
+                    3: "명령어마다 다른 수행 사이클을 가지므로 파이프라이닝이 효율적이다.",
+                    4: "메모리에 대한 액세스는 LOAD와 STORE만으로 한정되어 있다."
+                },
+                infoAnswer : "4",
+                infoDesc : "RISC의 약자인 Reduced는 제한된으로 해석 될 수도 있습니다.따라서 메모리에 대한 엑세스는 LOAD와 STORE만으로 '한정' 되어 있다.에서한정 이라는 말과 Reduced의 뜻이랑 같습니다"
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "클록펄스에 의해서 기억된 내용을 한 자리씩 우측이나 좌측으로 이동시키는 레지스터는?",
+                infoChoice : {
+                    1: "시프트 레지스터",
+                    2: "범용 레지스터",
+                    3: "베이스 레지스터",
+                    4: "인덱스 레지스터"
+                },
+                infoAnswer : "1",
+                infoDesc : "시프트(shift)의 뜻은 '이동시키다'로 우측이나 좌측으로 이동시키는 레지스터와 뜻이 같습니다."
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "중앙처리장치(CPU)에 해당하는 부분을 하나의 대규모 집적회로의 칩에 내장시켜 기능을 수행하게 하는 것은?",
+                infoChoice : {
+                    1: "컴파일러",
+                    2: "소프트웨어",
+                    3: "마이크로프로세서",
+                    4: "레지스터"
+                },
+                infoAnswer : "3",
+                infoDesc : "중앙처리장치에 해당하는 부분을 하나의 대규모 집적회로의 칩에 내장시켜 기능을 수행하게 하는 것입니다."
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "다음에 실행할 명령어의 번지를 기억하는 레지스터는?",
+                infoChoice : {
+                    1: "Memory Address Register",
+                    2: "Program Counter",
+                    3: "Instruction Register",
+                    4: "Processor Register"
+                },
+                infoAnswer : "2",
+                infoDesc : "PC : 프로그램카운터(다음수행 명령번지 기억)"
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "8비트짜리 레지스터 A와 B에 각각 11010101과 11110000이 들어 있다. 레지스터 A의 내용이 00100101로 바뀌었다면 두 레지스터 A, B 사이에 수행된 논리연산은?",
+                infoChoice : {
+                    1: "Exclusive-OR",
+                    2: "AND 연산",
+                    3: "OR 연산",
+                    4: "NOR 연산"
+                },
+                infoAnswer : "1",
+                infoDesc : `<br>
+                XOR : 서로 다르면 1 같으면 0<br>
+                AND : 모두 1 일때만 1<br>
+                OR  : 둘중에 한개라도 1 이면 1<br>
+                NOR : OR 결과와 반대, 모두 0 일때만 1`
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "2진수 (101010101010)2을 10진수로 변환하면?",
+                infoChoice : {
+                    1: "(2730)10",
+                    2: "(2630)10",
+                    3: "(2030)10",
+                    4: "(2130)10"
+                },
+                infoAnswer : "1",
+                infoDesc : `<br>
+                1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br>
+                (2048 1024 512 256 128 64 32 16 8 4 2 1)<br>
+                                    ↓<br>
+                    2048 + 512 + 128 + 32 + 8 + 2<br>
+                0 으로 포함되어 있는 수는 버리고 1에<br>
+                포함되어 있는 수끼리 더해 줍니다.<br>
+                <br>
+                더해주면 결과는 2730 이라는 결과가 나옵니다.<br>
+                결국 답은 (2730)10 이 정답이 됩니다.`
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "이항(binary) 연산에 해당하는 것은?",
+                infoChoice : {
+                    1: "COMPLEMENT",
+                    2: "AND",
+                    3: "ROTATE",
+                    4: "SHIFT"
+                },
+                infoAnswer : "2",
+                infoDesc : "단항연산 : ROTATE, SHIFT, MOVE, NOT(COMPLEMENT)"
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "프로그램이 컴퓨터의 기종에 관계없이 수행될 수 있는 성질을 의미하는 것은?",
+                infoChoice : {
+                    1: "가용성",
+                    2: "신뢰성",
+                    3: "호환성",
+                    4: "안전성"
+                },
+                infoAnswer : "3",
+                infoDesc : "컴퓨터의 기종에 관계없이 동작하므로 호환성입니다. 호환성이란 까스활명수, 까스명수, 베아제등 이름은 틀리지만 소화제의 기능을 하는것처럼 기종에 관계없이 동작할수 있는 것들을 말합니다."
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리 기능사",
+                infoQuestion : "제어장치가 앞의 명령 실행을 완료한 후, 다음에 실행 할 명령을 기억장치로부터 가져오는 동작을 완료할 때까지의 주기를 무엇이라고 하는가?",
+                infoChoice : {
+                    1: "fetch cycle",
+                    2: "transfer cycle",
+                    3: "search time",
+                    4: "run time"
+                },
+                infoAnswer : "1",
+                infoDesc : "명령어를 가지고 오는것을 fetch cycle 이라고 합니다."
+            }, {
+                infoDate:"2021년 10월",
+                infoType: "정보처리기능사",
+                infoQuestion: "헤딩과 텍스트로 이루어진 정보 메시지가 3개의 블록으로 분할되어 전송될 경우 최종 블록에 들어갈 전송 제어 문자는?",
+                infoChoice: {
+                    1: "ETB",
+                    2: "ETX",
+                    3: "SOH",
+                    4: "STX"
+                },
+                infoAnswer: "2",
+                infoDesc: "헤딩과 텍스트로 이루어진 정보 메시지가 3개의 블록으로 나뉘어져 전송될 경우, 시작을 알리는 STX, 종료를 알리는 ETX가 포함되어야 함.",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리기능사",
+                infoQuestion: "원격지에 설치된 입출력장치를 무엇이라하는가?",
+                infoChoice: {
+                    1: "변 복조 장치(MODEM)",
+                    2: "콘솔(CONSOLE)",
+                    3: "단말장치",
+                    4: "X-Y플로터"
+                },
+                infoAnswer: "3",
+                infoDesc: "단말장치는 통신 시스템과 사용자의 접점에 위치하여 컴퓨터에 의해 처리될 데이터를 입력하거나 처리된 결과를 출력하는 기능을 수행함",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리기능사",
+                infoQuestion: "ITU-T X시리즈 권고안 중 공중 데이터 네트워크에서 패킷형 터미널을 위한 DEC와 DTE 사이의 접속 규격은?",
+                infoChoice: {
+                    1: "X, 3",
+                    2: "X, 21",
+                    3: "X, 25",
+                    4: "X, 45"
+                },
+                infoAnswer: "3",
+                infoDesc: "X. 20은 비동기식 전송, X.21은 동기식 전송, X.25는 패킷 전송을 위한 DTE/DCE 접속 규격입니다.",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리기능사",
+                infoQuestion: "EIA RS-232C DTE 접속 장치의 핀은 모두 몇 개인가?",
+                infoChoice: {
+                    1: "25",
+                    2: "8",
+                    3: "16",
+                    4: "32"
+                },
+                infoAnswer: "1",
+                infoDesc: "RS-232C 커넥터 하면 25라는 숫자가 바로 생각나야 함.",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리기능사",
+                infoQuestion: "모뎀의 기능에 속하지 않는 것은?",
+                infoChoice: {
+                    1: "아날로그 신호를 디지털 신호로 변환한다.",
+                    2: "디지털 신호를 아날로그 신호로 변환한다.",
+                    3: "원거리 전송에 주로 이용된다.",
+                    4: "전이중 통신 방식을 반이중 통신 방식으로 변환한다."
+                },
+                infoAnswer: "4",
+                infoDesc: "모뎀의 가장 대표적인 기능은 변,복조 기능인데 1번은 복조, 2번은 변조 기능이며, 이 기능은 원거리 전송에 주로 이용된다.",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리기능사",
+                infoQuestion: "피변조파로부터 원래의 신호파를 만드는 것을 무엇이라 하는가?",
+                infoChoice: {
+                    1: "발진",
+                    2: "정류",
+                    3: "증폭",
+                    4: "복조"
+                },
+                infoAnswer: "4",
+                infoDesc: "피변조파는 변조된 신호를 의미합니다. 변조된 신호를 원래의 신호로 만드는 것을 복조라고 합니다.",
+            },
+            
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리기능사",
+                infoQuestion: "변,복조기의 역할과 거리가 먼 것은?",
+                infoChoice: {
+                    1: "통신 신호의 변환기라고 볼 수 있다.",
+                    2: "디지털 신호를 아날로그 신호로 변환한다.",
+                    3: "공중 전화 통신망에 적합한 통신 신호로 변환한다.",
+                    4: "컴퓨터 신호를 광 케이블에 적합한 광 신호로 변환한다."
+                },
+                infoAnswer: "4",
+                infoDesc: "모뎀의 역할은 디지털 데이터를 아날로그 신호로 변조하고, 아날로그 신호를 디지털 데이터로 복조하는 역할을 한다. ",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리기능사",
+                infoQuestion: "인터넷 도메인 네임을 IP Address로 바꿔주는 시스템을 무엇이라 하는가?",
+                infoChoice: {
+                    1: "HTTP",
+                    2: "TCP/IP",
+                    3: "URL",
+                    4: "DNS"
+                },
+                infoAnswer: "4",
+                infoDesc: "사람이 인식할 수 있는 도메인 네임을 컴퓨터가 이해할 수 있도록 숫자로 된 IP 주소로 변환할 때 사용하는 시스템은 DNS이다.",
+            },{
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "도스(MS-DOS)에서 'ATTRIB' 명령 사용 시, 읽기 전용 속성을 해제할 때 사용하는 옵션은?",
+                infoChoice : {
+                    1: "+H",
+                    2: "-S",
+                    3: "-A",
+                    4: "-R",
+                },
+                infoAnswer : "4",
+                infoDesc : " ATTRIB: 파일의 속성을 지정 및 해제하는 명령어<br>사용법: ATTRIB [+(속성 설정)속성 / -(속성 해제)속성][드라이브:][경로]파일명 [/옵션]<br>속성과 기능 설명<br>R(Read Only): 읽기 전용 속성<br>A(Archive): 저장 기능 속성<br>S(System): 시스템 파일 속성<br>H(Hidden): 숨김 속성",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "UNIX의 특징을 설명한 것으로 틀린 것은?",
+                infoChoice : {
+                    1: "대부분 고급 언어인 C 언어로 구성되어 타 기종에 이식성이 높다.",
+                    2: "동시에 여러 작업(task)을 수행할 수 있는 시스템이다.",
+                    3: "파일 구조가 선형구조의 형태로 되어 있어 파일을 효과적으로 운영할 수 있다.",
+                    4: "다수의 사용자(user)가 동시에 사용할 수 있는 시스템이다.",
+                },
+                infoAnswer : "3",
+                infoDesc : "파일, 디렉터리 및 서브 디렉터리의 계층적인 구조로 트리 구조를 가짐",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "다음 중 온라인 실시간 시스템의 조회 방식에 가장 적합한 업무는?",
+                infoChoice : {
+                    1: "객관식 채점 업무",
+                    2: "좌석 예약 업무",
+                    3: "성적 처리 업무",
+                    4: "봉급 계산 업무",
+                },
+                infoAnswer : "2",
+                infoDesc : "실시간 처리 시스템(Real Time Processing System) : 데이터가 발생되는 즉시 처리하는 방식으로 바로 응답을 받아볼 수 있는 시스템이며 항상 온라인을 유지해야 함, 항공 및 철도 승차권 예약, 좌석 예약, 은행 온라인 업무, 로봇 제어 등",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "다중 프로그래밍 환경에서 하나 또는 그 이상의 프로세스가 실행이 불가능한 특정 사건(Event)을 무한정 기다리는 상태를 무엇이라 하는가?",
+                infoChoice : {
+                    1: "Swapping",
+                    2: "Pipelining",
+                    3: "Overlay",
+                    4: "Deadlok",
+                },
+                infoAnswer : "4",
+                infoDesc : "교착 상태(Deadliock): 자원은 한정되어 있으나 각 프로세스 들이 서로 자원을 차지하려고 무한정 대기하는 상태로, 해당 프로세스의 진행이 중단되는 상태를 의미<br>파이프라아닝(Pipelining) : 하나의 명령을 여러 개의 독립된 실행 단계로 나우고 이들을 순서에 따라 차례로 실행해 나가는 방법으로, CPU의 실행 속도가 빨라짐",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "페이지 대체 알고리즘에서 계수기를 두어 가장 오랫동안 참조되지 않은 페이지를 교체할 페이지로 선택하는 방법은?",
+                infoChoice : {
+                    1: "FIFO",
+                    2: "LRU",
+                    3: "LFU",
+                    4: "OPT",
+                },
+                infoAnswer : "2",
+                infoDesc : "LRU(Least Recently Used): 가장 오랫동안 사용되지 않은 페이지를 교체할 페이지로 선택하는 기법<br>FIFO(First in First Out): 주기억 장치 내에 가장 먼저 들어온 가장 오래된 페이지를 교체할 페이지로 선택하는 기법<br>LFU(Least Frequently Used): 사용된 횟수가 가장 적은 페이지를 교체할 페이지로 선택하는 기법<br>최적화 기법(OPT; OPTimal replacement): 앞으로 가장 오랫동안 사용되지 않거나 사용도가 낮을 페이지를 선택하여 교체하는 기법",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "실행 중인 프로그램이나 시스템을 중지시킬 수 있는 수행 중단 기능(Break = on)을 설정할 수 있는 도스 파일은?",
+                infoChoice : {
+                    1: "IO.SYS",
+                    2: "COMMAND.COM",
+                    3: "CONFIG. SYS",
+                    4: "AUTOEXEC.BAT",
+                },
+                infoAnswer : "3",
+                infoDesc : "환경 설정 파일로 부팅 시 컴퓨터 시스템 및 주변 장치에 필요한 기본 환경을 설정하고 프로그램의 실행을 중단하는 기능의 설정 및 해제를 담당",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "도스(MS-DOS)에서 단편화되어 있는 파일의 저장 상태를 최적화하여 디스크의 작동 효율을 높이는 명령은?",
+                infoChoice : {
+                    1: "DISKCOMP",
+                    2: "CHKDSK",
+                    3: "DEFRAG",
+                    4: "DISKCOPY",
+                },
+                infoAnswer : "3",
+                infoDesc : "DEFRAG: 디스크에 생긴 단편화 현상을 제거하는 명령",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "도스(MS- DOS)에서 사용자가 잘못해 파일의 정보를 삭제하였을 때, 이를 복원하는 명령어는?",
+                infoChoice : {
+                    1: "DELETE",
+                    2: "UNDELETE",
+                    3: "FDISK",
+                    4: "ANTI",
+                },
+                infoAnswer : "2",
+                infoDesc : "UNDELETE: 삭제했던 파일을 복구<br>DEL: 파일 삭제<br>FDSK: 하드 디스크의 논리적인 파티션 설정",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "원도우즈에서 작업 표시줄(Task Bar)의 속성에 대한 설명으로 틀린 것은?",
+                infoChoice : {
+                    1: "작업 표시줄 자동 숨기기를 설정하면 화면에 필요시만 나타난다.",
+                    2: "현재 실행 중인 프로그램은 작업 표시줄에 표시된다.",
+                    3: "작업 표시줄 여백에 마우스 포인터를 위치시키고 마우스의 왼쪽 버튼을 눌러 속성을 볼 수 있다.",
+                    4: "작업 표시줄 잠금은 작업 표시줄의 영역을 임의로 설정하지 못한다.",
+                },
+                infoAnswer : "3",
+                infoDesc : "작업 표시줄 여백에 마우스 포인터를 위치시키고 마우스의 오른쪽 버튼을 놀러 속성을 볼 수 있음",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "UNIX에서 파일의 내용을 화면에 보여주는 명령은?",
+                infoChoice : {
+                    1: "rm",
+                    2: "cat",
+                    3: "mv",
+                    4: "type",
+                },
+                infoAnswer : "2",
+                infoDesc : "cat: 파일의 내용 표시(DOS의 TYPE)<br>rm: 파일 삭제 명령(DOS의 DEL)<br>mv: 파일 및 디렉터리 이동 또는 이름 변경(DOS의 RENAME(= REN))<br>type: 텍스트 파일의 내용을 보여주는 DOS 명령어",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "UNIX에서 네트워크 상의 문제를 진단할 수 있는 명령어는?",
+                infoChoice : {
+                    1: "ping",
+                    2: "cd",
+                    3: "pwd",
+                    4: "who",
+                },
+                infoAnswer : "1",
+                infoDesc : "ping: 네트워크에 연결되어 있는 다른 컴퓨터들의 연결 상태 점검<br>cd: 디렉터리 경로 변경<br> pwd: 현재 작업중인 디렉터리의 경로 표시<br>who: 현재 시스템을 사용하고 있는 사용자의 정보",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "다음 중 Linux의 특징에 대한 설명으로 옳지 않은 것은?",
+                infoChoice : {
+                    1: "멀티태스킹을 지원한다.",
+                    2: "UNIX 운영체제와의 호환성이 원활하지 않다.",
+                    3: "동시에 여러 사용자가 사용할 수 있는 운영체제이다.",
+                    4: "소스 코드가 공개되어 있어 자유롭게 활용이 가능한 오픈 소스 운영체제이다.",
+                },
+                infoAnswer : "2",
+                infoDesc : "UNIX 운영체제와 완전한 호환이 가능함",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "데이터 통신 네트워크 유형 중 분산 처리 네트워크의 장점과 거리가 먼 것은?",
+                infoChoice : {
+                    1: "데이터의 신속한 현장 처리가 가능하다.",
+                    2: "시스템의 운영조직이 간단해진다.",
+                    3: "장애 발생시 전체적으로 기능이 마비되지 않는다.",
+                    4: "자원의 공유가 가능하다.",
+                },
+                infoAnswer : "2",
+                infoDesc : "분산 처리 네트워크 방식은 각 지역별로 자료를 분산 처리하는 방식으로 자원의 공유가 가능하며 시스템의 과부하를 방지, 장애가 발생하더라도 기능 유지가 됨",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "UNIX 시스템에서 명령어 해석기에 해당하는 것은?",
+                infoChoice : {
+                    1: "셸(Shell)",
+                    2: "커널(Kernel)",
+                    3: "유틸리티(Utility)",
+                    4: "응용 프로그램(Application Program)",
+                },
+                infoAnswer : "1",
+                infoDesc : "셸(Shell): 사용자와 UNIX 간의 인터페이스 역할을 하며, DOS의 COMMAND 같은 역할을 담당함<br>커널(Kornel) : UNIX의 가장 핵심적인 부분으로 항상 주기억 장치에 상주하며 시스템의 자원를 관리<br>유틸리티(Utility): DOS의 외부 명령어에 해당, 사용자 편리를 위해 준비된 시스템 프로그램",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "UNIX 시스템에서 현재 작업 중인 프로세스의 상태를 알기 위해 사용하는 명령어는?",
+                infoChoice : {
+                    1: "cat",
+                    2: "ps",
+                    3: "ls",
+                    4: "cp",
+                },
+                infoAnswer : "2",
+                infoDesc : "ps: 프로세스 상태 보기<br>ls: 지정한 디렉터리의 파일을 보여줌<br>cp: 파일 복사 명령",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "현재의 작업 디렉터리를 나타내기 위한 UNIX 명령은?",
+                infoChoice : {
+                    1: "cd",
+                    2: "pwd",
+                    3: "kill",
+                    4: "cp",
+                },
+                infoAnswer : "2",
+                infoDesc : "pwd : 현재 디렉터리의 검로를 표시(print working directory)<br>cd: 디렉터리 경로 변경<br>cp: 파일 복사 명령<br>kill: 강제로 수행중인 프로세스를 중지",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "데이터 통신의 정의에 대한 설명 중 옳지 않은 것은?",
+                infoChoice : {
+                    1: "공중 전화 교환망을 통하여 접속된 전화기를 이용한 음성 통신",
+                    2: "2진 부호 형태의 정보를 목적물로 하는 통신",
+                    3: "정보 기기 사이에 디지털 형태의 정보를 송수신 하는 통신",
+                    4: "전기 통신 회선에 컴퓨터를 접속하여 정보를 송수신 및 처리하는 통신",
+                },
+                infoAnswer : "1",
+                infoDesc : "정보 통신 : 가공 처리된 문자, 음성, 영상 등과 같은 일련의 정보를 기기 간의 유ㆍ무선을 통해 서로 주고받는 행위",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "다음 중 통신 제어 장치의 역할과 거리가 먼 것은?",
+                infoChoice : {
+                    1: "통신 회선과 중앙 처리 장치의 결합",
+                    2: "중앙 처리 장치와 데이터의 송수신 제어",
+                    3: "데이터의 교환 및 축적 제어",
+                    4: "회선 접속 및 전송 에러 제어",
+                },
+                infoAnswer : "3",
+                infoDesc : "통신 제어 장치(Communication Control Unit): 데이터 전송 회선과 컴퓨터 사이를 연결하고 통신 회선과 중앙 처리 장치를 결합하여 데이터의 송ㆍ수신 및 회선 접속, 전송 에러를 제어함",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "하나의 중앙 처리 장치에 통신 회선을 통하여 여러 개의 입출력 장치를 항시 연결해서 자료를 처리하는 방식은?",
+                infoChoice : {
+                    1: "중앙 처리 방식",
+                    2: "온라인 시스템",
+                    3: "오프라인 시스템",
+                    4: "일괄 처리 방식",
+                },
+                infoAnswer : "2",
+                infoDesc : "온라인 시스템: 중앙 처리 장치에 통신 회선을 사용하여 여러 개의 단말 장치를 연결하여 처리하는 방식<br>오프라인 시스템: 통신 제어 장치 없이 일정량 데이터를 모았다가 처리<br>일괄 처리 방식: 일정 기간, 일정량의 데이터를 모았다가 처리",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "광섬유 케이블의 장점이 아닌 것은?",
+                infoChoice : {
+                    1: "잡음 영향이 적다.",
+                    2: "대역폭이 넓다.",
+                    3: "도청이 어렵다.",
+                    4: "누화량이 많다.",
+                },
+                infoAnswer : "4",
+                infoDesc : "광섬유 케이블은 전자 유도의 영향을 받지 않으므로 누화(혼선)을 방지할 수 있음",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType : "정보처리기능사",
+                infoQuestion : "일괄 처리(Batch Processing) 방법에 속하지 않는 것은?",
+                infoChoice : {
+                    1: "자료가 발생할 때마다 보조 기억 장치에 기억해 두었다가 필요시에 처리하는 방식",
+                    2: "자료가 일정량 수신되면 처리하는 방식",
+                    3: "자료를 일정 기간 단위로 처리하는 방식",
+                    4: "자료가 발생하는 즉시 필요한 처리를 하는 방식",
+                },
+                infoAnswer : "3",
+                infoDesc : "자료가 발생하는 즉시 필요한 처리를 하는 방식 -> 실시간 처리(Real Time Processing)",
+            },{
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "논리적 연산의 종류에 해당하지 않는 것은?",
+                infoChoice: {
+                    1: "AND",
+                    2: "OR",
+                    3: "Rotate",
+                    4: "ADD",
+                },
+                infoAnswer: "4",
+                infoDesc: "비수치적 연산 : Shift, Rotate, Move, AND, OR, NOt",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "디스크 팩이 6장으로 구성되었을 때 사용하여 기록할 수 있는 면의 수는?",
+                infoChoice: {
+                    1: "6",
+                    2: "8",
+                    3: "10",
+                    4: "12",
+                },
+                infoAnswer: "3",
+                infoDesc: "6장의 디스크인 경우 = 6 x 2 - 2 = 10",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "입출력 장치와 중앙 처리 장치의 속도 차이로 인한 단점을 해결하는 장치는?",
+                infoChoice: {
+                    1: "채널 장치",
+                    2: "제어 장치",
+                    3: "터미널 장치",
+                    4: "콘솔 장치",
+                },
+                infoAnswer: "1",
+                infoDesc: "채널 : 입출력 장치와 주기억 장치 사이에 존재하며, 데이터 처리의 고속성을 위하여 입출력만을 목적으로 만든 입출력 전용처리기",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "특정한 장치에서 사용되는 정보를 다른 곳으로 전송하기 위하여 일정한 규칙에 따라 암호로 변환하는 장치는?",
+                infoChoice: {
+                    1: "명령 계수기",
+                    2: "명령 레지스터",
+                    3: "부호기",
+                    4: "해독기",
+                },
+                infoAnswer: "3",
+                infoDesc: "부호기 : 중앙 처리 장치에서 실행하기 위한 전기 신호로 변환하여 각 장치에 보내는 기능",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "주기억 장치에서 자료 표현의 최소 단위는?",
+                infoChoice: {
+                    1: "레코드",
+                    2: "바이트",
+                    3: "셀",
+                    4: "블록",
+                },
+                infoAnswer: "2",
+                infoDesc: "바이트 : 8개의 bit로 구성되며 문자를 표현하는 기본 단위",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "주소 지정 방식 중 기억 장치에 접근할 피연산자가 없는 것으로 산술에 필요한 명령어는 스택 구조 형태에서 처리하도록 하는 것은?",
+                infoChoice: {
+                    1: "0-주소 형식",
+                    2: "1-주소 형식",
+                    3: "2-주소 형식",
+                    4: "3-주소 형식",
+                },
+                infoAnswer: "1",
+                infoDesc: "0-주소 형식은 스택 구조라고 하며 명령어에 오퍼랜드부가 없이 데이터가 명령어 자체에 있는 방식",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "명령어의 구성을 가장 바르게 표현한 것은?",
+                infoChoice: {
+                    1: "명령 코드부와 번지부로 구성",
+                    2: "오류 검색 코드 형식",
+                    3: "자료의 표현과 주소 지정 방식",
+                    4: "주 프로그램과 부 프로그램",
+                },
+                infoAnswer: "1",
+                infoDesc: "명령어의 형식 : 명령 코드부와 번지부로 구성됨",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "입출력 장치의 동작 속도와 전자계산기 내부의 동작 속도를 맞추는데 사용되는 레지스터는?",
+                infoChoice: {
+                    1: "시퀀스 레지스터",
+                    2: "시프트 레지스터",
+                    3: "버퍼 레지스터",
+                    4: "어드레스 레지스터",
+                },
+                infoAnswer: "3",
+                infoDesc: "버퍼 레지스터 : 읽거나 기록한 데이터를 일시적으로 기억할 수 있는 레지스터",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "데이터베이스 개체의 속성 중 하나의 속성이 가질 수 있는 모든 값의 집합을 무엇이라고 하는가?",
+                infoChoice: {
+                    1: "객체",
+                    2: "속성",
+                    3: "도메인",
+                    4: "카디널리티",
+                },
+                infoAnswer: "3",
+                infoDesc: "도메인 : 하나의 속성이 취할 수 있는 값의 집합",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "프레젠테이션 프로그램의 사용 용도로 거리가 가장 먼 것은?",
+                infoChoice: {
+                    1: "교육 자료 작성",
+                    2: "제품 설명회 및 자료 작성",
+                    3: "통계 자료 계산",
+                    4: "회의 자료 작성",
+                },
+                infoAnswer: "3",
+                infoDesc: "통계 자료 계산은 스프레드시트 프로그램으로 작업하는 것이 효율적임",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "수치 계산과 관련된 업무에서 계산의 어려움과 비효율성을 개선하여 전표의 작성, 처리, 관리를 쉽게 할 수 있도록 한 것은?",
+                infoChoice: {
+                    1: "스프레드시트",
+                    2: "데이터베이스",
+                    3: "프레젠테이션",
+                    4: "워드프로세서",
+                },
+                infoAnswer: "1",
+                infoDesc: "스프레드시트 : 각족 계산 관련 업무를 처리하는 전자계산장",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "DBA의 역할로 거리가 먼 것은?",
+                infoChoice: {
+                    1: "DBMS의 성능 향상을 위한 데이터의 저장 구조 및 접근 방법의 결정",
+                    2: "데이터베이스의 생성과 삭제",
+                    3: "데이터 보안에 대한 조치",
+                    4: "최종 사용자를 위한 응용 프로그램의 개발",
+                },
+                infoAnswer: "4",
+                infoDesc: "응용 프로그래머 : 데이터 부속어와 호스트 프로그래밍 언어를 이용하여 응용 프로그램을 개발",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "3단계 스키마의 종류가 아닌 것은?",
+                infoChoice: {
+                    1: "개념 스키마",
+                    2: "외부 스키마",
+                    3: "관계 스키마",
+                    4: "내부 스키마",
+                },
+                infoAnswer: "3",
+                infoDesc: "스키마 : 외부 스키마, 개념 스키마, 내부 스키마",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "스프레드시트에서 입력의 기본 단위를 무엇이라고 하는가?",
+                infoChoice: {
+                    1: "함수",
+                    2: "셀",
+                    3: "테이블",
+                    4: "슬라이드",
+                },
+                infoAnswer: "2",
+                infoDesc: "셀 : 스프레드시트이 워크시트에서 행과 열이 만나서 이루는 사각형으로 데이터가 입력되는 기본 단위",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "UNIX에서 파일을 삭제할 때 사용되는 명령어는?",
+                infoChoice: {
+                    1: "ls",
+                    2: "cp",
+                    3: "pwd",
+                    4: "rm",
+                },
+                infoAnswer: "4",
+                infoDesc: "rm : 파일 삭제 명령으로 DOs 명령의 DEL과 같음",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "도스(MS-DOS)에서 두 개의 파일을 비교하여 그 차이를 나타내는 명령은?",
+                infoChoice: {
+                    1: "SHARE",
+                    2: "VER",
+                    3: "MOVE",
+                    4: "FC",
+                },
+                infoAnswer: "4",
+                infoDesc: "FC : 두 개의 파일을 비교하여 그 차이를 표시",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "UNIX에서 현재 실행 중인 프로세스를 종료하기 위한 명령어는?",
+                infoChoice: {
+                    1: "ps",
+                    2: "del",
+                    3: "kill",
+                    4: "stop",
+                },
+                infoAnswer: "3",
+                infoDesc: "kill : 강제로 수행 중인 프로세스를 중지",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "유닉스(UNIX) 명령어 중 DOS의 DIR과 같은 역할을 하는 명령은?",
+                infoChoice: {
+                    1: "ls",
+                    2: "cd",
+                    3: "pwd",
+                    4: "cp",
+                },
+                infoAnswer: "1",
+                infoDesc: "ls : 지정한 디렉터리의 파일을 보여주는 명령으로 DOS의 DIR과 같음",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "운영체제의 특성ㅇ으로 옳지 않은 것은?",
+                infoChoice: {
+                    1: "신뢰성",
+                    2: "효율성",
+                    3: "복잡성",
+                    4: "용이성",
+                },
+                infoAnswer: "3",
+                infoDesc: "운영체제의 특성 : 효율성, 신뢰성, 용이성 등",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "윈도우즈 DOS의 디렉터리와 유사한 의미를 가진 것은?",
+                infoChoice: {
+                    1: "파일",
+                    2: "트리",
+                    3: "로그오프",
+                    4: "폴더",
+                },
+                infoAnswer: "4",
+                infoDesc: "폴더 : 서로 관련 있는 파일들을 저장하는 장소로 DOS의 디렉터리와 같은 개념",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "윈도우즈의 메모장을 이용하여 문서를 작성하고 저장했을 때의 기본적인 파일 확장자명으로 옳은 것은?",
+                infoChoice: {
+                    1: "hwp",
+                    2: "txt",
+                    3: "doc",
+                    4: "bmp",
+                },
+                infoAnswer: "2",
+                infoDesc: "메모장의 확장자 : .TXT",
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "데이터베이스 구조를 3단계의 스키마로 나눌 경우 포함되지 않은 것은?",
+                infoChoice: {
+                    1: "외부 스키마",
+                    2: "개념 스키마",
+                    3: "논리 스키마",
+                    4: "내부 스키마",
+                },
+                infoAnswer: "3",
+                infoDesc: "데이터베이스 구조 : 외부 스키마, 개념 스키마, 내부 스키마",
+            },{
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "프레젠테이션에서 사용하는 하나의 화면을 무엇이라 하는가?",
+                infoChoice: {
+                    1: "슬라이드",
+                    2: "매크로",
+                    3: "개체",
+                    4: "셀"
+                },
+                infoAnswer: "1",
+                infoDesc: "슬라이드는 프레젠테이션을 구성하는 한 페이지 단위입니다.ㄴ"
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "주기억 장치의 용량을 실제보다 크게 활용할 수 있도록 하기 위하여 실제 자료를 보조 기억 장치에 두고 주기억장치에 있는 것과 같이 처리 시킬 수 있는 기억장치는?",
+                infoChoice: {
+                    1: "가상 기억 장치",
+                    2: "확장 기억 장치",
+                    3: "캐시 기억 장치",
+                    4: "기본 기억 장치"
+                },
+                infoAnswer: "1",
+                infoDesc: "가상 기억 장치(Virtual Memory)은 주기억 장치의 용량이 부족하여 보조 기억 장치의 일부를 마치 주기억 장치인 것처럼 이용하여 메모리 관리하느 기법입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "8진 PSK 오류율은 2진 PSK 오류율의 몇 배인가?",
+                infoChoice: {
+                    1: "2배",
+                    2: "3배",
+                    3: "6배",
+                    4: "8배"
+                },
+                infoAnswer: "2",
+                infoDesc: "8진 PSK은 2의 3승이므로 한 번 변조로 3비트 전송하고 2진 PSK느 2의 1승이므로 한 번 변조로 1비트 전송합니다. 따라서 8진 PSK는 2진 PSK에 비해 속도가 3배 빠르므로 8진 PSK 오류율은 루트 3배로 늘어납니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "윈도우즈 운영체제에서 지워진 파일이 임시로 보관되는 곳은?",
+                infoChoice: {
+                    1: "휴지통",
+                    2: "내 문서",
+                    3: "내 컴퓨터",
+                    4: "내 서류가방"
+                },
+                infoAnswer: "1",
+                infoDesc: "휴지통은 삭제한 파일 및 폴더를 임시로 보관하는 장소이며 필요 시 삭제 이전의 상태로 복원이 가능합니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "다음 중 Linux의 pico 편집기에 대한설명으로 틀린 것은?",
+                infoChoice: {
+                    1: "pico의 복제 프로그램에는 nono가 있다",
+                    2: "워싱턴 대학의 Aboil Kasar가 개발한 텍스트 편집기이다.",
+                    3: "pico 편집기는 GPL 라이선스를 따른다.",
+                    4: "Pine이라는 E=mail 클라이언트 프로그램과 같이 배포되었다."
+                },
+                infoAnswer: "3",
+                infoDesc: "pico 편집기는 자유 소프트웨어의 라이선스가 아님"
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "UNIX에서 명령어 mv의 기능으로 옳은 것은?",
+                infoChoice: {
+                    1: "파일의 이름을 바꾼다.",
+                    2: "파일을 복구한다.",
+                    3: "파일 목록을 열거한다.",
+                    4: "파일을 화면에 출력한다."
+                },
+                infoAnswer: "1",
+                infoDesc: "mv 명령어는 파일 및 디렉터리 이동 또는 이름 변경하는 명령어입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "시스템의 날짜를 변경하거나, 확인할 수 있는 DOS 명령어는?",
+                infoChoice: {
+                    1: "CD",
+                    2: "DATE",
+                    3: "CLS",
+                    4: "COPY"
+                },
+                infoAnswer: "2",
+                infoDesc: "DATE는 날짜 확인 및 설정하는 명령어입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "신호의 변조 속도가 1,600[Baud]이고, 트리비트(Tribit)인 경우 전송 속도[BPS]는?",
+                infoChoice: {
+                    1: "1,600",
+                    2: "2,400",
+                    3: "4,800",
+                    4: "9,600"
+                },
+                infoAnswer: "3",
+                infoDesc: "트리비트인 경우 BPS = Baud X 3 = 1,600 X 3 = 4,800"
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "두 지점 간을 직통 회선으로 연결한 회선 방식으로 트래픽이 많은 경우에 가장 적합한 방식은?",
+                infoChoice: {
+                    1: "분기 회선 방식",
+                    2: "전용 회선 방식",
+                    3: "루프 회선 방식",
+                    4: "교환 회선 방식"
+                },
+                infoAnswer: "2",
+                infoDesc: "전용 회선 방식은 교환기를 사용하지 않고 직접적, 직통적, 고정적으로 연결하는 방식이며 데이터의 양이 많거나 이용 횟수가 많을 경우에 적합합니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "OSI 7계층 참조 모델 중 논리적 링크라고 불리는 가상 회로와 관련 있는 것은?",
+                infoChoice: {
+                    1: "데이터 링크 계층",
+                    2: "네트워크 계층",
+                    3: "응용 계층",
+                    4: "세션 계층"
+                },
+                infoAnswer: "2",
+                infoDesc: "네트워크 계층은 제 3계층으로 응용 프로세스가 존재하느 시스템 간 데이터의 교환 기능, 복수 망인 경우 중계 시스템에 대한 경로 선택 및 중계 기능을 제공, 데이터프로그램 또는 가상 회선 개설합니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "다음 중 정지 위성의 위치는 지구 적도 상공 약 몇 [km]인가?",
+                infoChoice: {
+                    1: "25,000",
+                    2: "36,000",
+                    3: "45,000",
+                    4: "56,000"
+                },
+                infoAnswer: "2",
+                infoDesc: "정지 위성의 위치는 지구 적도 상공 약 36,000[km]입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "JK 플립플롭에서 보수가 출력되기 위한 J, K의 입력 상태는?",
+                infoChoice: {
+                    1: "J=1, K=0",
+                    2: "J=0, K=1",
+                    3: "J=1, K=1",
+                    4: "J=0, K=0"
+                },
+                infoAnswer: "3",
+                infoDesc: "JK플립픕롭은 RS플립플롭(R=1, S=1일때 부정)의 단점을 개선한 플립플롭으로 J=K=1일 때 반전(보수) 됩니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "논리식 Z=A+(A<span style=\"text-decoration: overline\">B</span>)를 간소화 하면 결과는?",
+                infoChoice: {
+                    1: "Z = A+B",
+                    2: "Z = <div style=\"text-decoration: overline\">A</div>+B",
+                    3: "z = A",
+                    4: "z = 1"
+                },
+                infoAnswer: "3",
+                infoDesc: "= A·1+(A<span style=\"text-decoration: overline\">B</span>)<br>=A·(1<span style=\"text-decoration: overline\">B</span>)<br>=A·1<br>=A"
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "명령어의 주소(Address)부를 연산 주소(Address)로 이용하는 주소 지정 방식은?",
+                infoChoice: {
+                    1: "상대 Addressing 방식",
+                    2: "절대 Addressing 방식",
+                    3: "간접 Addressing 방식",
+                    4: "직접 Addressing 방식"
+                },
+                infoAnswer: "4",
+                infoDesc: "직정 주소 지정(Direct Addressing)은 주소 부분에 있느 값이 실제 데이터가 있는 주기억 장치 내의 주소를 나타냅니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "논리적 연산의 종류에 해당하지않은 것은?",
+                infoChoice: {
+                    1: "AND",
+                    2: "OR",
+                    3: "Rotate",
+                    4: "ADD"
+                },
+                infoAnswer: "4",
+                infoDesc: "비수치적 연산은 논리적 연산에 사요되는 연산으로 Shift, Rotate, Move, AND, OR, NOR 등이 있습니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "입출력 장치와 중앙 처리 장치의 속도 차이로 인한 단점을 해결하는 장치는?",
+                infoChoice: {
+                    1: "채널 장치",
+                    2: "제어 장치",
+                    3: "터미널 장치",
+                    4: "콘솔 장치"
+                },
+                infoAnswer: "1",
+                infoDesc: "채널은 입출력 장치와 주기억 장치 사이에 존재하며, 데이터 처리의 고속성을 위하여 입출력만을 목적으로 만든 입출력 전용 처리기입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "주기억 장치에서 자료 표현의 최소 단위는",
+                infoChoice: {
+                    1: "레코드(Record)",
+                    2: "바이트(Byte)",
+                    3: "셀(Cell)",
+                    4: "블록(Block)"
+                },
+                infoAnswer: "2",
+                infoDesc: "바이트는 8개의 Bit로 구성되며 문자를 표현하는 기본 단위로 주기억 장치의 자료 표현의 최소 단위입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "명령어(Instruction)의 구성을 가장 바르게 표현한 것은?",
+                infoChoice: {
+                    1: "명령 코드부와 번지부로 구성",
+                    2: "오류 검색 코드 형식",
+                    3: "자료의 표현과 주소 지정 방식",
+                    4: "주 프로그램과 부 프로그램"
+                },
+                infoAnswer: "1",
+                infoDesc: "명령어(Instruction)은 명령 코드부(OP-Code)와 번지부(Operand)로 구성됩니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "입출력 장치의 동작 속도와 전자계산기 내부의 동작 속도를 맞추는데 사용되는 레지스터는?",
+                infoChoice: {
+                    1: "시퀀스 레지스터(Sequence Register)",
+                    2: "시프트 레지스터(Shift Register)",
+                    3: "버퍼 레지스터(Buffer Register)",
+                    4: "어드레스 레지스터(Address Register)"
+                },
+                infoAnswer: "3",
+                infoDesc: "버퍼 레지스터는 읽거나 기록한 데이터를 일시적으로 기억할 수 있는 레지스터로 장치와 장치 간의 시간과흐름의 차이를 위해 사용되는 임시 기억을 위한 레지스터입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "데이터베이스 개체(Entity)의 속성 중 하나의 속성이 가질 수 있는 모드 값의 집합을 무엇이라고 하는가?",
+                infoChoice: {
+                    1: "객체(Object)",
+                    2: "속성(Attribute)",
+                    3: "도메인(Domain)",
+                    4: "카디널리티(Cardinality)"
+                },
+                infoAnswer: "3",
+                infoDesc: "도메인은 하나의 속성이 취할 수 있는 값의 집합입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "수치 계산과 관련된 업무에서 계산의 어려움과 비효율성을 개선하여 전표의 작성, 처리, 관리를 쉽게 할 수 있도록 한 것은?",
+                infoChoice: {
+                    1: "스프레드시트",
+                    2: "데이터베이스",
+                    3: "프레젠테이션",
+                    4: "워드프로세서"
+                },
+                infoAnswer: "1",
+                infoDesc: "스프레드시트는 각종 계산 관련 업무를 처리하는 전자 계산장으로 급여 계산, 판매 계획표, 성적 관리, 가계 분석, 재고 관리등이 가능합니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "3단계 스키마(Schema)의 종류가 아닌 것은?",
+                infoChoice: {
+                    1: "개념 스키마",
+                    2: "외부 스키마",
+                    3: "관계 스키마",
+                    4: "내부 스키마"
+                },
+                infoAnswer: "3",
+                infoDesc: "스키마는 데이터베이스를 구성하는 파일, 레코드, 항목의 형식과 상호 관계 전체를 정의한 것으로 외부 스키마, 내부 스키마, 개념 스키마가 있습니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "UNIX에서 파일을 삭제할 때 사용되는 명령어는?",
+                infoChoice: {
+                    1: "ls",
+                    2: "cp",
+                    3: "pwd",
+                    4: "rm"
+                },
+                infoAnswer: "4",
+                infoDesc: "rm은 파일 삭제 명령으로 DOS의 DEL과 같습니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "운영체제의 특성으로 옳지 않은 것은?",
+                infoChoice: {
+                    1: "신뢰성",
+                    2: "효율성",
+                    3: "복잡성",
+                    4: "용이성"
+                },
+                infoAnswer: "3",
+                infoDesc: "운영체제의 특성은 효율성, 신뢰성, 용이성 등이 있습니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "윈도우즈의 휴지통에 대한 설명으로 옳지 않은 것은?",
+                infoChoice: {
+                    1: "삭제한 파일을 임시 저장하며 휴지통 내에 파일을 다시 복구할 수 있다.",
+                    2: "휴지통의 크기를 변경시킬 수 없다.",
+                    3: "파일 삭제 시 휴지통에 보관하지 않고 즉시 삭제할지를 지정할 수 있다.",
+                    4: "파일 삭제 시 삭제 확인 메시지를 보이지 않게 지정할 수 있다."
+                },
+                infoAnswer: "2",
+                infoDesc: "각각의 드라이브마다 휴지통 설정이 가능하며 휴지통의 크기를 지정할 수 있습니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "도스(MS-DOS)에서 ATTRIB 명령어의 옵션에 대한 설명으로 옳지 않은 것은?",
+                infoChoice: {
+                    1: "백업파일 속성 : A",
+                    2: "시스템 파일 속성 : S",
+                    3: "읽기 전용 파일 속성 : P",
+                    4: "숨김 파일 속성 : H"
+                },
+                infoAnswer: "3",
+                infoDesc: "ATTRIB은 파일의 속성을 지정 및 해제하는 명령어이며 읽기 전용 파일 속성은 R입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "광섬유를 이용한 LAN으로 전송로의 속도가 100[Mbps]의 전송이 가능한 것은?",
+                infoChoice: {
+                    1: "X.25",
+                    2: "X.28",
+                    3: "FDDI",
+                    4: "ANSI"
+                },
+                infoAnswer: "3",
+                infoDesc: "FDDI(Fiber Distribute Data Interface)은 광섬유 케이블을 이용한 고속의 링(Ring)방식으로 섬유 분산 데이터 인터페이스라고도 합니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "변조 속도가 2,400[Baud]이고, 쿼드비트(Quadbit)를 사용하는 경우 전송 속도는 몇 [BPS]인가?",
+                infoChoice: {
+                    1: "1,600",
+                    2: "2,400",
+                    3: "4,800",
+                    4: "9,600"
+                },
+                infoAnswer: "4",
+                infoDesc: "4비트가 신호 단위인 경우이므로 2,400*4=9,600이 됩니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "HDLC 전송 프레임 중 시작과 끝을 나타내는 것은?",
+                infoChoice: {
+                    1: "제어(CONTROL)부",
+                    2: "프레임 검사 시퀀스(FCS)",
+                    3: "플래그(FLAG)",
+                    4: "주소(ADDRESS)부"
+                },
+                infoAnswer: "3",
+                infoDesc: "HDLC Frame의 구성은 시작 플래그, 주소부, 제어부, 정보부, FCS, 종료 플래그로 구성되었습니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "순차적인 주소 지정 등에 유리하며, 주소 지정에 레지스터 2개가 사용되는 방식은? ",
+                infoChoice: {
+                    1: "간접 Addressing",
+                    2: "직접 Addressing",
+                    3: "색인 Addressing",
+                    4: "상대 Addressing"
+                },
+                infoAnswer: "3",
+                infoDesc: "색인 주소 지정(Indexed Addressing)은 인덱스 레지스터와 주소 부분을 더해서 주소를 지정하는 방식입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "누를 때마다 ON, OFF가 교차되는 스위치를 만들고자 할 때 사용되는 플립플롭은?",
+                infoChoice: {
+                    1: "T 플립플롭",
+                    2: "D 플립플롭",
+                    3: "JK 플립플롭",
+                    4: "RS 플립플롭"
+                },
+                infoAnswer: "1",
+                infoDesc: "T 플립플롭은 토글 플립플롭으로서, 입력이 0일 경우에는 상태가 불변이고, 입력이 1일 경우에는 보수가 출력됩니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "기업체의 발표회나 각종 회의 등에서 빔프로젝터 등을 이용하여 제품에 대한 소개나 회의 내용을 요약 정리하여 청중에게 효과적으로 전달하기 위한 도구를 의하는 것은?",
+                infoChoice: {
+                    1: "데이터베이스",
+                    2: "프로젠테이션",
+                    3: "스프레드시트",
+                    4: "워드프로세서"
+                },
+                infoAnswer: "2",
+                infoDesc: "프로젠테이션은 기업체의 뱔표회나 각종 횡의 등ㅇ에서 빔프로젝터 등을 이용하여 제품에 대한 소개나 회의 내용을 요약 정리하여 많은 사람에게 효과적으로 전달하기 위한 도구입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "SQL의 SELECT문에서 특정 열의 값을 기준을 정렬할 때 사용하느 절은?",
+                infoChoice: {
+                    1: "ORDER TO 절",
+                    2: "ORDER BY 절",
+                    3: "SORT BY 절",
+                    4: "SORT 절"
+                },
+                infoAnswer: "2",
+                infoDesc: "ORDER BY 정령할 필드명 [ASC(오름차순) | DESC(내림차순)]이 기본 명령입니다."
+            },
+            {
+                infoDate:"2021년 10월",
+                infoType: "정보처리 기능사",
+                infoQuestion: "운영체제의 특성으로 거리가 먼 것은?",
+                infoChoice: {
+                    1: "효율성",
+                    2: "신뢰성",
+                    3: "복잡성",
+                    4: "용이성"
+                },
+                infoAnswer: "3",
+                infoDesc: "운영체제의 특징은 효율성, 신뢰성, 용이성이 있습니다."
+            } 
+        ];
+
+
+        // 문제 출력 
+        const updateQuiz = () => {
+            const quizArray = [];
+
+            quizInfo.forEach((quiz, index) => {
+                quizArray.push(`<div class="quiz">
+        <div class="quiz_header">${quiz.infoDate} ${quiz.infoType}</div>
+        <div class="quiz_main">
+            <div class="quiz_question">${index + 1}. ${quiz.infoQuestion}
+            </div>
+            <div class="quiz_choice">
+                <label for="choice1-${index}">
+                    <input type="radio" id="choice1-${index}" name="choice${index}" value="1">
+                    <span>${quiz.infoChoice[1]}</span>
+                </label>
+                <label for="choice2-${index}">
+                    <input type="radio" id="choice2-${index}" name="choice${index}" value="2">
+                    <span>${quiz.infoChoice[2]}</span>
+                </label>
+                <label for="choice3-${index}">
+                    <input type="radio" id="choice3-${index}" name="choice${index}" value="3">
+                    <span>${quiz.infoChoice[3]}</span>
+                </label>
+                <label for="choice4-${index}">
+                    <input type="radio" id="choice4-${index}" name="choice${index}" value="4">
+                    <span>${quiz.infoChoice[4]}</span>
+                </label>
+            </div>
+            <div class="quiz_input none">
+                <input type="text" placeholder="정답을 입력해주세요!">
+            </div>
+            <div class="quiz_answer none">${quiz.infoAnswer}</div>
+            <div class="quiz_desc none">${quiz.infoDesc}</div>
+        </div>
+        <div class="quiz_footer">
+            <button class="quiz_confirm" data-index="${index}">정답 확인하기</button>
+        </div>
+        </div>`);
+            });
+            quizWrap.innerHTML = quizArray.join(" ");
+        }
+
+        updateQuiz();
+
+        // 정답 확인
+        const answerQuiz = (index) => {
+          const quizChoices = document.querySelectorAll(`.quiz_choice input[name="choice${index}"]:checked`);
+          const answerElement = quizWrap.querySelectorAll(".quiz_answer")[index];
+          const descElement = quizWrap.querySelectorAll(".quiz_desc")[index];
+          const quizElement = quizWrap.querySelectorAll(".quiz")[index];
+
+            if (quizChoices.length > 0) {
+                const userAnswer = quizChoices[0].value;
+
+                if (userAnswer === quizInfo[index].infoAnswer) {
+                    answerElement.textContent = "정답입니다!";
+                    quizElement.classList.add("good");
+                    totalScore++;
+                    quizScore.innerHTML = totalScore;
+                } else {
+                    answerElement.textContent = `${quizInfo[index].infoAnswer}`;
+                    quizElement.classList.add("bad");
+                    descElement.classList.remove("none");
+                    answerElement.classList.remove("none");
+                }
+            }
+        }
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            updateQuiz();
+
+            const confirmButtons = document.querySelectorAll(".quiz_confirm");
+            confirmButtons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    answerQuiz(index);
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 불러오기</title>
+
+    <link rel="stylesheet" href="https://webfontworld.github.io/gmarket/GmarketSans.css">
+    <link rel="stylesheet" href="https://websfont.github.io/nanumSquareNeo/nanumSquareNeo.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/default.min.css">
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <h1>
+                <a href="index.html">javascript</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="javascript01.html">데이터 저장하기</a></li>
+                    <li class="active"><a href="javascript02.html">데이터 불러오기</a></li>
+                    <li><a href="javascript03.html">데이터 실행하기</a></li>
+                    <li><a href="javascript04.html">데이터 제어하기</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- //header -->
+
+        <main id="main">
+
+            <div class="main__menu">
+                <ul>
+                    <li><a href="#">01. 변수 : 데이터 불러오기</a></li>
+                    <li><a href="#">02. 상수 : 데이터 불러오기</a></li>
+                    <li><a href="#">03. 배열 : 데이터 불러오기</a></li>
+                    <li><a href="#">04. 배열 : 데이터 불러오기 + 갯수</a></li>
+                    <li><a href="#">05. 배열 : 데이터 불러오기 : for()</a></li>
+                    <li><a href="#">06. 배열 : 데이터 불러오기 : 중첩 for()</a></li>
+                    <li><a href="#">07. 배열 : 데이터 불러오기 : forEach()</a></li>
+                    <li><a href="#">08. 배열 : 데이터 불러오기 : for of</a></li>
+                    <li><a href="#">09. 배열 : 데이터 불러오기 : for in</a></li>
+                    <li><a href="#">10. 배열 : 데이터 불러오기 : map()</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">++ 연산자</a></li>
+                </ul>
+            </div>
+            <!-- //main__menu -->
+
+        </main>
+        <!-- //main -->
+
+        <footer id="footer">
+            <a href="mailto:webstoryboy@naver.com">webstoryboy@naver.com</a>
+        </footer>
+        <!-- //footer -->
+    </div>
+    <!-- script -->
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script>
+        // 05. 배열 : 데이터 불러오기 : for()
+        {
+            const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+
+            //for(초기값; 조건식; 증감값)
+            for(let i = 0; i<9; i++){
+                console.log(arr[i]);
+            }
+        }
+        //1 ~ 100
+        {
+            for(i=0; i<100; i++){
+                console.log(i+1);
+            }
+        }
+        //2~55
+        {
+            for(let i = 0; i < 54; i++){
+                console.log(i+2);
+            }
+        }
+        // for문 짝수출력
+        {
+            for(let i = 2; i < 100; i += 2){
+                console.log(i);
+            }
+        }
+        // while문 짝수출력
+        {
+            let i = 2;
+            while(i <= 100){
+                console.log(i);
+                i+=2;
+            }
+        }
+        // if for 짝수
+        {
+            for(let i = 1; i <= 100; i++){
+                if(i % 2 == 0){
+                    console.log(i);
+                }
+            }
+        }
+        // for문 홀수(시작값을 1로해서 2씩 증감)
+        for (let i = 1; i <= 10; i += 2) {
+            console.log(i);
+        }
+
+        // while문 홀수 출력
+        {
+            let i = 1;
+            while(i < 100){
+                console.log(i);
+                i+=2;
+            }
+        }
+
+        // if for 홀수
+        {
+            for(let i = 1; i <= 100; i++){
+                if(i % 2 == 1){
+                    console.log(i);
+                }
+            }
+        }
+        // for 5의 배수
+        {
+            for(let i = 5; i <= 100; i+=5){
+                console.log(i);
+            }
+        }
+        // while 5의 배수
+        {
+            let i = 5;
+            while(i <= 100){
+                console.log(i);
+                i += 5;
+            }
+        }
+        // for, if 5의 배수
+        {
+            for(let i = 1; i <= 100; i++){
+                if(i % 5 == 0){
+                    console.log(i);
+                }
+            }
+        }
+
+        // 1 ~ 100 document 출력
+        {
+            for(let i = 1; i <= 100; i++){
+                document.write(i+"<br>");
+            }
+        }
+        // 1 ~ 100 document 출력
+        {
+            for(let i = 1; i <= 100; i++){
+                if(i % 2 ==0){
+                    document.write('<span style="color: blue;">'+ i + '</span>', '<br>');
+                } else {
+                    document.write('<span style="color: red;">'+ i + '</span>', '<br>');
+                }
+            }
+        }
+
+        // 배열에서 데려오기
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            for(i=0; i<arr.length; i++){
+                if(arr[i] % 2 == 0){
+                    document.write(arr[i], "<br>");
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

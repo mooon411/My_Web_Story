@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST 0906</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #header {
+            height: 100px;
+            background-color: #867272;
+        }
+        #nav {
+            height: 100px;
+            background-color: #4b3434;
+        }
+        #main {
+            height: 780px;
+            background-color: #9c8787;
+        }
+        #footer {
+            height: 100px;
+            background-color: #271717;
+        }
+        .container {
+            width: 1200px;
+            height: inherit;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, .8);
+        }
+        .contents {
+            display: grid;
+            grid-template-areas: 
+                "con1 con1"
+                "con2 con2"
+                "con3 con4"
+            ;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 100px 200px 480px;
+        }
+        .con1 {
+            background-color: #413434;
+            grid-area: con1;
+        }
+        .con2 {
+            background-color: #585151;
+            grid-area: con2;
+
+        }
+        .con3 {
+            background-color: #2c1d1d;
+            grid-area: con3;
+
+        }
+        .con4 {
+            background-color: #2c1414;
+            grid-area: con4;
+
+        }
+
+        @media (max-width: 1280px){
+            .container {
+                width: 90%;
+            }
+            .contents {
+                grid-template-areas: 
+                    "con1 con2 con2"
+                    "con1 con3 con4"
+                ;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 780px){
+            .container {
+                width: 100%;
+            }
+            .contents {
+                grid-template-areas: 
+                    "con1 con2"
+                    "con1 con3"
+                    "con1 con4"
+                    ;
+                grid-template-columns: 30% 70%;
+                grid-template-rows: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 600px){
+            .container {
+                width: 100%;
+            }
+            .contents {
+                grid-template-areas: 
+                    "con1"
+                    "con2"
+                    "con3"
+                    "con4"
+                    ;
+                grid-template-columns: 100%;
+                grid-template-rows: 100px 210px 210px 210px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="header">
+        <div class="container"></div>
+    </div>
+    <div id="nav">
+        <div class="container"></div>
+    </div>
+    <div id="main">
+        <div class="container contents">
+            <div class="con1"></div>
+            <div class="con2"></div>
+            <div class="con3"></div>
+            <div class="con4"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container"></div>
+    </div>
+
+    <!-- <script>
+
+        let arr = [1,2,3,4,5,6,7,8,9,10]
+        // 01. for()
+        {
+            for(let i=0; i<10; i++){
+                document.write(arr[i]);
+            }
+            document.write("<br>");
+        }
+        // 02. forEach()
+        {
+            arr.forEach(el => {
+                    document.write(el);
+            });
+            document.write("<br>");
+        }
+        // 03. for of()
+        {
+            for(let i of arr){
+                document.write(i);
+            }
+            document.write("<br>");
+        }
+        // 04. for in()
+        {
+            for(let i in arr){
+                document.write(arr[i]);
+            }
+            document.write("<br>");
+        }
+        // 05. map()
+        {
+            arr.map(el => {
+                    document.write(el);
+            });
+            document.write("<br>");
+        }
+        // 06. filter()
+        {
+            arr.filter(el => {
+                    document.write(el);
+            });
+            document.write("<br>");
+        }
+        // 07. 1~100까지 합
+        {
+            let sum = 0;
+
+            for(let i=1; i<=100; i++){
+                sum += i
+            }
+            document.write(sum);
+            document.write("<br>");
+
+        }
+        // 08. 구구단
+        {
+            let num = 8;
+            for(let i=1; i<=9; i++){
+                document.write(num+" X "+i+" = "+i*num+"<br>");
+            }
+        }
+        // 09. 테이블 출력(5*5) 
+        {
+            let table = "<table border=1>";
+            let num = 0;
+            for(let i=1; i<=5; i++){
+                table += "<tr>";
+                    for(let j=1; j<=5; j++){
+                        num++;
+                        table += "<td>"+num+"</td>";
+                    }
+                table += "</tr>";
+            }
+            table += "</table>";
+            document.write(table);
+
+        }
+        // 10. 테이블 출력(5*5 짝수) 
+        {
+            let table = "<table border=1>";
+            let num = 0;
+            for(let i=1; i<=5; i++){
+                table += "<tr>";
+                    for(let j=1; j<=5; j++){
+                        num+= 2;
+                        table += "<td>"+num+"</td>";
+                    }
+                table += "</tr>";
+            }
+            table += "</table>";
+            document.write(table);
+
+        }
+        // 11. 테이블 출력(10*10 짝수 빨강, 홀수 파랑) 
+        {
+            let table = "<table border=1>";
+            let num = 0;
+            cellSt = "";
+
+            for(let i=1; i<=10; i++){
+                table += "<tr>";
+                    for(let j=1; j<=10; j++){
+                        num++;
+                        cellSt = (num % 2 === 0) ? "color:red;":"color: blue;";
+                        table += "<td style='"+cellSt+"'>"+num+"</td>";
+                    }
+                table += "</tr>";
+            }
+            table += "</table>";
+            document.write(table);
+
+        }
+        
+        
+        // [함수 선언 10가지]
+
+        // 01. 선언적 함수
+        {
+            function func(){
+                document.write("함수 실행1");
+            }
+            func();
+            document.write("<br>");
+        }
+        // 02. 익명함수
+        {
+            const func = function(){
+                document.write("함수 실행2");
+            }
+            func();
+            document.write("<br>");
+        }
+        // 03. 매개변수 함수
+        {
+            function func(str){
+                document.write(str);
+            }
+            func("함수 실행3");
+            document.write("<br>");
+        }
+        // 04. 리턴값 함수
+        {
+            function func(){
+                return "함수 실행4";
+            }
+            document.write(func());
+            document.write("<br>");
+        }
+        // 05. 매개변수 + 리턴값 함수
+        {
+            function func(str){
+                return str;
+            }
+            document.write(func("함수 실행5"));
+            document.write("<br>");
+        }
+        // 06. 화살표 함수 (선언적 함수)
+        {
+            func= () => {
+                document.write("함수 실행6");
+            }
+            func();
+            document.write("<br>");
+        }
+        // 07. 화살표 함수 (익명 함수)
+        {
+            const func= () => {
+                document.write("함수 실행7");
+            }
+            func();
+            document.write("<br>");
+        }
+        // 08. 화살표함수 (매개변수 함수)
+        {
+            func = (str) => {
+                document.write(str);
+            }
+            func("함수 실행8");
+            document.write("<br>");
+        }
+        // 09. 화살표함수 (리턴값 함수)
+        {
+            func = () => {
+                return "함수 실행9";
+            }
+            document.write(func());
+            document.write("<br>");
+        }
+        // 10. 화살표함수 (익명함수 + 매개변수 + 리턴값)
+        {
+            func = (str) => {
+                return str;
+            }
+            document.write(func("함수 실행10"));
+            document.write("<br>");
+        }
+        // 10-2. 화살표함수 (익명함수 + 매개변수 + 리턴값 + 괄호 생략)
+        {
+            const func = str => {
+                return str;
+            }
+            document.write(func("함수 실행11"));
+            document.write("<br>");
+        }
+        // 10-3. 화살표함수 (익명함수 + 매개변수 + 리턴값 + 괄호 생략 + 리턴 생략)
+        {
+            const func = str => str;
+
+            document.write(func("함수 실행12"));
+            document.write("<br>");
+        }
+        // 10-4. 화살표함수 (선언적 함수 + 매개변수 + 리턴값 + 괄호 생략)
+        {
+            func = str => str;
+            
+            document.write(func("함수 실행13"));
+            document.write("<br>");
+        }
+    </script> -->
+</body>
+</html>

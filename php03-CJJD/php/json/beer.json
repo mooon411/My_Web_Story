@@ -1,0 +1,143 @@
+[
+    {
+        "img": "../json/img/beer/클라우드.png",
+        "name": "클라우드 오리지널",
+        "alcohol": "5",
+        "price": "1,900",
+        "company": "롯데주류",
+        "desc": "국산 맥주 중 홉과 맥아 향이 확실하게 느껴지는 몇 안되는 맥주다.",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/카스.png",
+        "name": "카스 프레쉬",
+        "alcohol": "4.5",
+        "price": "2,800",
+        "company": "OB맥주",
+        "desc": "특별하거나 풍부한 향 없이시원하게 즐길 수 있는 라거 스타일",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/카프리.png",
+        "name": "카프리",
+        "alcohol": "4.2",
+        "price": "2,100",
+        "company": "OB맥주",
+        "desc": "맛이 좀 톡 쏘는 맛을 유난히 강조한 맥주이다.",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/하이트.png",
+        "name": "하이트",
+        "alcohol": "4.5",
+        "price": "1,810",
+        "company": "하이트진로",
+        "desc": "맛이 좀 이상하다.",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/필라이트.png",
+        "name": "필라이트",
+        "alcohol": " 4.5",
+        "price": "1,600",
+        "company": "하이트진로",
+        "desc": "아로마 홉을 사용했기 때문인지 발포주 치고는 홉향도 다른 맥주보다 낫다는 평가도 있긴 하다.",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/테라.png",
+        "name": "테라",
+        "alcohol": "4.6",
+        "price": "1,360",
+        "company": "하이트진로",
+        "desc": "맛 자체는 강하지 않지만, 그 대신 탄산이 강한 것을 강점으로 내세우는 맥주.",
+        "view": 0,
+        "like": 0
+    },
+
+    {
+        "img": "../json/img/beer/망고링고.png",
+        "name": "망고링고",
+        "alcohol": "2.5",
+        "price": "1,480",
+        "company": "하이트진로",
+        "desc": "맥주가 베이스라 파인애플맛 대만맥주를 모티브로 한 제품으로 추정한다.",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/기린 이치방.png",
+        "name": "기린 이치방 시보리",
+        "alcohol": "5",
+        "price": "4,500",
+        "company": "기린맥주 주식회사",
+        "desc": "부드러운 편이며, 시트러스 같은 홉향이 뒷맛으로 남는다.",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/아사히_수퍼드라이.png",
+        "name": "아사히 수퍼드라이",
+        "alcohol": "5",
+        "price": "4,500",
+        "company": "아사히맥주 주식회사",
+        "desc": "원료인 맥아 사용량을 줄이고 옥수수를 사용한 맥주",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/아사히_수퍼드라이블랙.png",
+        "name": "아사히 수퍼드라이 드라이블랙 ",
+        "alcohol": "5",
+        "price": "4,500",
+        "company": "아사히맥주 주식회사",
+        "desc": "'루비빛 갈색 라거로 볶은 낟알, 커피와 건조 과일의 환상적인 아로마, 중간 단맛이 충만하고 커피와 감초맛이 동반된다. ",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/아사히_수퍼드라이_나마조키.png",
+        "name": "아사히 수퍼드라이 나마죠키",
+        "alcohol": "5",
+        "price": "4,500",
+        "company": "아사히맥주 주식회사",
+        "desc": "생맥주의 청량감을 살린 제품이다.",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/산토리프리미엄몰츠.png",
+        "name": "산토리 프리미엄 몰츠",
+        "alcohol": "5.5",
+        "price": "4,500",
+        "company": "산토리 홀딩스 주식회사",
+        "desc": "",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/삿포로.png",
+        "name": "삿포로",
+        "alcohol": "5",
+        "price": "4,500",
+        "company": "삿포로 맥주 주식회사",
+        "desc": "무난할 것도 같지만 버번위스키 느낌의 옥수수향과 맛을 느낄 수 있는 조금 특별한 맥주인 것 같다. ",
+        "view": 0,
+        "like": 0
+    },
+    {
+        "img": "../json/img/beer/에비스.png",
+        "name": "에비스",
+        "alcohol": "5",
+        "price": "4,500",
+        "company": "삿포로 맥주 주식회사",
+        "desc": "똑같이 100% 맥아로 만드는 다른 맥주들과 비교해도 단 맛이 강한 게 특징",
+        "view": 0,
+        "like": 0
+    }
+]

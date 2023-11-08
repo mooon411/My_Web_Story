@@ -1,0 +1,52 @@
+[ 
+    {
+        "name": "zeroin",
+        "question": "제일 좋아하는 색은?",
+        "incorrect_answers": [
+            "분홍",
+            "노랑",
+            "하늘"
+        ],
+        "correct_answer": "연두"
+    },
+    {
+        "name": "zeroin",
+        "question": "제일 좋아하는 음식은?",
+        "incorrect_answers": [
+            "우동",
+            "김치볶음밥",
+            "떡볶이"
+        ],
+        "correct_answer": "초밥"
+    },
+    {
+        "name": "zeroin",
+        "question": "MBTI는?",
+        "incorrect_answers": [
+            "INFP",
+            "ESFP",
+            "ISTP"
+        ],
+        "correct_answer": "ENTP"
+    },
+    {
+        "name": "zeroin",
+        "question": "요즘 관심사는?",
+        "incorrect_answers": [
+            "등산",
+            "드라이브",
+            "뜨개질"
+        ],
+        "correct_answer": "요리"
+    },
+    {
+        "name": "zeroin",
+        "question": "나이는?",
+        "incorrect_answers": [
+            "22",
+            "24",
+            "25"
+        ],
+        "correct_answer": "23"
+    }
+]

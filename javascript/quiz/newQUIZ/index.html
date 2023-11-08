@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/newQuiz.css">
+
+    <title>간단 퀴즈</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="quiz_box">
+            <div class="quiz_title">간단 퀴즈</div>
+            <div class="question">질문</div>
+            <div class="quiz_choice">
+                <input type="radio" id="choice1">
+                <label for="choice1"><span class="quizNum">인터럽트 요청을 방지</span></label>
+                <input type="radio" id="choice2">
+                <label for="choice2"><span class="quizNum">기억 장소를 절약</span></label>
+                <input type="radio" id="choice3">
+                <label for="choice3"><span class="quizNum">연산의 정확성</span></label>
+                <input type="radio" id="choice4">
+                <label for="choice4"><span class="quizNum">연산 속도 향상</span></label>
+            </div>
+            <div class="quiz_answer">
+                정답
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //선택자
+        const quizBox = document.querySelector('.quiz_box');
+        const quizTitle = quizBox.querySelector('.quiz_title');
+        const quizAnswer = quizBox.querySelector('.quiz_answer');
+
+        //문제 정보
+        let quizInfo = [];
+        
+        //문제 가져오기
+        const fetchQuiz = () => {
+            fetch(`https://webstoryboy.github.io/webs2024/json/gineungsaJC2005_02.json`)
+            .then(res => res.json())
+            .then(items => {
+                console.log(items);
+            });
+        }
+        fetchQuiz();
+
+    </script>
+</body>
+</html>

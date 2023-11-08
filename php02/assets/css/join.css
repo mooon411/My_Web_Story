@@ -1,0 +1,184 @@
+.join__inner {
+    padding: 80px 0;
+}
+.join__inner h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.join__index {
+    text-align: center;
+    margin-top: 20px;
+}
+.join__index ul {
+    display: inline-block;
+    position: relative;
+}
+.join__index ul::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: var(--black);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: -1;
+}
+.join__index li {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 33px;
+    border-radius: 50%;
+    border: 1px solid var(--black);
+    font-family: 'NanumSquareNeo';
+    font-size: 18px;
+    background-color: var(--primary-color);
+}
+.join__index li:nth-child(2) {
+    margin: 0 30px;
+}
+.join__index li.active {
+    background-color: var(--black);
+    color: var(--white);
+}
+/* 개인수정 */
+.join__agree {
+    padding: 0 20%;
+}
+.agree__box {
+    background-color: #f6f6f6;
+    padding: 20px;
+    margin-top: 40px;
+}
+.agree__box h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.agree__box .scroll {
+    line-height: 1.5;
+    white-space: pre-line;
+    font-size: 14px;
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #eee;
+    margin-bottom: 15px;
+}
+
+.agree__box .scroll p {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+}
+.agree__box .check {
+    width: 100%;
+    background-color: #dcdcdc;
+    padding: 15px;
+    position: relative;
+}
+.agree__box .check input[type="checkbox"]{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+.agree__box .check label {
+    padding-left: 35px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.agree__box .check:hover {
+    color: rgb(128, 128, 128);
+    background-color: #ebebeb;
+}
+
+.join__result {
+    text-align: center;
+    margin: 80px 0;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 800px){
+    .join__form {
+        padding: 5% 20px;
+    }
+}
+
+
+/* join__insert */
+.join__insert {
+    padding: 0 10%;
+}
+.join__insert .join {
+    margin-top: 50px;
+}
+.join__insert div label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+.join__insert div input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.join__insert div .msg {
+    color: var(--red);
+    margin-bottom: 3rem;
+}
+.join__insert .check {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.join__insert .check label {
+    width: 100%;
+}
+.join__insert .check input {
+    width: 69%;
+    height: 58px;
+}
+.join__insert .check .btn {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--black);
+    color: var(--white);
+    font-size: 1rem;
+    padding: 0 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 58px;
+}
+.join__btn {
+    margin-top: 70px;
+    text-align: center;
+}
+.join__btn a {
+    display: inline-block;
+}
+@media (max-width: 800px){
+    .join__insert {
+        padding: 0;
+    }
+}
+@media (max-width: 600px){
+    .join__insert .check {
+        flex-direction: column;
+    }
+    .join__insert .check input {
+        width: 100%;
+        height: 47px;
+    }
+    .join__insert .check .btn {
+        width: 100%;
+        height: 47px;
+        margin-bottom: 10px;
+    }
+}

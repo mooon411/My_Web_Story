@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 이펙트03</title>
+
+    <link rel="stylesheet" href="css/mouse.css">
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .mouse_wrap {
+            cursor: none;
+        }
+
+        .mouse_text {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .mouse_text p {
+            color: #fff;
+            font-size: 2.4vw;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .mouse_text p span {
+            color: #f49fff;
+            border-bottom: 1px dashed #c066e4;
+            cursor: pointer;
+        }
+
+        .mouse_cursor {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border:  5px solid #fff;
+            background-color: rgba(255, 255, 255, 0.5);
+            background-image: url(img/bg05.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body class="img05">
+    <header id="header">
+        <h1>Javascript mouse Effect03</h1>
+        <p>마우스 이펙트 - 돋보기 효과</p>
+        <ul>
+            <li><a href="mouse01.html">1</a></li>
+            <li><a href="mouse02.html">2</a></li>
+            <li class="active"><a href="mouse03.html">3</a></li>
+            <li><a href="mouse04.html">4</a></li>
+            <li><a href="mouse05.html">5</a></li>
+            <li><a href="mouse06.html">6</a></li>
+        </ul>
+    </header>
+    <main id="main">
+        <div class="mouse_wrap">
+            <div class="mouse_cursor"></div>
+            <div class="mouse_text">
+                <p>Every cloud has a silver lining</p>
+                <p>하늘이 무너져도 솟아날 구멍이 있어요.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        //선택자
+        const mouseCursor = document.querySelector(".mouse_cursor");
+        const rect = mouseCursor.getBoundingClientRect();
+
+
+        window.addEventListener("mousemove", e => {
+            gsap.to(".mouse_cursor", {
+                duration: 0.5,
+                left: e.pageX - mouseCursor.clientWidth/2,
+                top: e.pageY - mouseCursor.clientHeight/2
+                // left: e.pageX - rect.width/2,
+                // top: e.pageY - rect.height/2
+            });
+        });
+
+        console.log(rect);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 이펙트02</title>
+
+    <link rel="stylesheet" href="css/mouse.css">
+    <style>
+        .mouse_wrap {
+            cursor: none;
+        }
+
+        .mouse_text {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .mouse_text p {
+            color: #fff;
+            font-size: 2vw;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .mouse_text p span {
+            color: #f49fff;
+            border-bottom: 1px dashed #c066e4;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .mouse_cursor {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            z-index: 10001;
+            border-radius: 50%;
+            background: rgba(54, 0, 109, 0.747);
+            user-select: none;
+            pointer-events: none;
+            transition: transform 0.3s;
+        }
+
+        .mouse_cursor2 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            z-index: 10000;
+            border-radius: 50%;
+            background: rgba(221, 206, 255, 0.288);
+            user-select: none;
+            pointer-events: none;
+            transition: transform 0.3s;
+        }
+        .mouse_cursor.active {
+            transform: scale(0);
+        }
+        .mouse_cursor2.active {
+            transform: scale(5);
+            background-color: #ac6ff193;
+        }
+    </style>
+</head>
+
+<body class="img02">
+    <header id="header">
+        <h1>Javascript mouse Effect01</h1>
+        <p>마우스 이펙트 - 마우스 따라다니기(GSAP)</p>
+        <ul>
+            <li><a href="mouse01.html">1</a></li>
+            <li class="active"><a href="mouse02.html">2</a></li>
+            <li><a href="mouse03.html">3</a></li>
+            <li><a href="mouse04.html">4</a></li>
+            <li><a href="mouse05.html">5</a></li>
+            <li><a href="mouse06.html">6</a></li>
+        </ul>
+    </header>
+    <main id="main">
+        <div class="mouse_wrap">
+            <div class="mouse_cursor"></div>
+            <div class="mouse_cursor2"></div>
+            <div class="mouse_text">
+                <p>Impossible is <span>nothing</span>. Everything <span>possible</span> is</p>
+                <p><span>불가능</span>은 아무런 의미가 없다. <span>가능한</span> 것은 모두 가능하다</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        // 선택자
+        const mouseCursor = document.querySelector(".mouse_cursor");
+        const mouseCursor2 = document.querySelector(".mouse_cursor2");
+
+        window.addEventListener("mousemove", (e) => {
+            // mouseCursor.style.left = e.pageX + "px";
+            // mouseCursor.style.top = e.pageY + "px";
+            // mouseCursor2.style.left = e.pageX + "px";
+            // mouseCursor2.style.top = e.pageY + "px";
+            gsap.to(mouseCursor, { duration: 0.3, left: e.pageX -5, top: e.pageY -5 });
+            gsap.to(mouseCursor2, { duration: 0.8, left: e.pageX -20, top: e.pageY -20 });
+
+        });
+
+        document.querySelectorAll(".mouse_text span").forEach(span => {
+            span.addEventListener("mouseenter", () => {
+                mouseCursor.classList.add("active");
+                mouseCursor2.classList.add("active");
+            })
+            span.addEventListener("mouseleave", () => {
+                mouseCursor.classList.remove("active");
+                mouseCursor2.classList.remove("active");
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+.search_form {
+    display: flex;
+    justify-content: center;
+}
+
+.board_search_box {
+    margin-left: 10px;
+    position: relative;
+
+}
+
+.board_search_box input {
+    /* border: 2px solid var(--mcolor); */
+    border: 2px solid var(--gray);
+
+    border-radius: 6px;
+    height: 35px;
+    width: 350px;
+    padding: 20px 0 20px 20px;
+}
+
+.board_search_box button {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    color: var(--mcolor);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px;
+    right: 5%;
+    top: 54%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 550px) {
+    .search_form {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .board_search_box input {
+        width: 98%;
+    }
+
+    .selectBox2 {
+        margin-top: 10px;
+        width: 96%;
+        margin-left: 10px;
+    }
+
+    .selectBox2 i {
+        right: 2%;
+    }
+}
+
+
+@media (max-width: 440px) {
+    .board_search_box button>i {}
+}
+
+/* ***********************8 board top end *******************************/

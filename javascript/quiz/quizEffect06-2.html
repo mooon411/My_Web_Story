@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 이펙트06</title>
+
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <h1>
+            <a href="../index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quizEffect01.html">1</a></li>
+                <li><a href="quizEffect02.html">2</a></li>
+                <li><a href="quizEffect03.html">3</a></li>
+                <li><a href="quizEffect04.html">4</a></li>
+                <li><a href="quizEffect05.html">5</a></li>
+                <li class="active"><a href="quizEffect06.html">6</a></li>
+                <li><a href="quizEffect07.html">7</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz_wrap"></div>
+        <div class="quiz_check">정답 확인</div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:webstoryboy@naver.com">webstoryboy@naver.com</a>
+    </footer>
+    <!-- //footer -->
+    <div class="modal_wrap">
+        <div class="modal_btn">소스보기</div>
+        <div class="modal_cont">
+            <div class="modal_box">
+                <div class="title">제목</div>
+                <div class="cont">
+<pre><code class="lenguage-js">
+
+</code></pre>
+                </div>
+            </div>
+            <div class="modal_close">
+                <svg width="18" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path d="M12.5 12.5L3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+    <script>
+        //선택자
+        const quizWrap = document.querySelector(".quiz_wrap");
+        const quizCheck = document.querySelector(".quiz_check");
+
+        // 변수 설정
+        let currentIndex = 0; //현재 문제
+        let quizInfo = []; //모든 퀴즈 정보
+
+        // 문제 가져오기
+        const fetchQuiz = () => {
+            fetch("https://mooon411.github.io/webs2024/json/gineungsaJC2011_05.json")
+                .then(res => res.json())
+                .then(items => {
+                    quizInfo = items.map((item, index) => {
+                        const formattedQuiz = {
+                            infoDate: "2011년 5회",
+                            infoType: item.subject,
+                            infoQuestion: item.question,
+                            infoChoice: [
+                                ...item.incorrect_answers,
+                                item.correct_answer 
+                            ],
+                            infoAnswer : item.correct_answer,
+                            infoDesc: item.desc
+                        }
+
+                        // 보기 가져오기
+                        const choices = [...item.incorrect_answers, item.correct_answer];
+                        formattedQuiz.infoChoice = choices;
+
+                        // 보기 랜덤 섞기
+                        for (let i = choices.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [choices[i], choices[j]] = [choices[j], choices[i]];
+                        }
+
+                        return formattedQuiz;
+                    });
+                    
+                    console.log(quizInfo);
+                    updataQuiz();
+                });
+        }
+
+        // 문제 출력
+        const updataQuiz = () => {
+            const quizArray = [];
+
+            quizInfo.forEach((quiz, number) => {
+                quizArray.push(`
+                    <div class="quiz">
+                        <div class="quiz_header">${quiz.infoDate} ${quiz.infoType}</div>
+                        <div class="quiz_main">
+                            <div class="quiz_question">
+                                ${number+1}. ${quiz.infoQuestion}
+                            </div>
+                            <div class="quiz_choice">
+                                <label for="choice1-${number}">
+                                    <input type="radio"  id="choice1-${number}" name="choice-${number}" value="1">
+                                    <span>${quiz.infoChoice[0]}</span>
+                                </label>
+                                <label for="choice2-${number}">
+                                    <input type="radio"  id="choice2-${number}" name="choice-${number}" value="2">
+                                    <span>${quiz.infoChoice[1]}</span>
+                                </label>
+                                <label for="choice3-${number}">
+                                    <input type="radio"  id="choice3-${number}" name="choice-${number}" value="3">
+                                    <span>${quiz.infoChoice[2]}</span>
+                                </label>
+                                <label for="choice4-${number}">
+                                    <input type="radio"  id="choice4-${number}" name="choice-${number}" value="4">
+                                    <span>${quiz.infoChoice[3]}</span>
+                                </label>
+                            </div>
+                            <div class="quiz_answer none">
+                                ${quiz.infoAnswer}
+                            </div>
+                            <div class="quiz_desc none">
+                                ${quiz.infoDesc}
+                            </div>
+                        </div>
+                    </div>
+                `);
+            })
+
+            quizWrap.innerHTML = quizArray.join("");
+        }
+
+        // 정답확인
+        const answerCheck = (index) => {
+            quizCheck.addEventListener("click", () => {
+                const userAnswer = quizWrap.querySelector(`input[name='choice-${index}']:checked`);
+                console.log(userAnswer);
+                console.log(answerCheck.index);
+            });
+        }
+        answerCheck();
+
+       
+
+
+        // 로드
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchQuiz();
+        });
+    </script>
+</body>
+
+</html>

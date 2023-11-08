@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 연습</title>
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="stylesheet" href="assets/css/ani.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Quiz</h1>
+        <nav>
+            <ul>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">7</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- header -->
+    <main id="main">
+        <div class="quiz_wrap">
+            <div class="quiz">
+                
+                <div class="quiz_header">
+                    <span class="quiz_date"></span>
+                    <span class="quiz_type"></span>
+                </div>
+
+                <div class="quiz_main">
+                    <div class="quiz_question">
+                        <em></em>
+                        <span></span>
+                    </div>
+                    <div class="quiz_animation">
+                        <div class="wrapper">
+                            <div class="card-container">
+                                <div class="dog">
+                                    <div class="head">
+                                        <div class="ears"></div>
+                                        <div class="face"></div>
+                                        <div class="eyes">
+                                            <div class="teardrop"></div>
+                                        </div>
+                                        <div class="nose"></div>
+                                        <div class="mouth">
+                                            <div class="tongue"></div>
+                                        </div>
+                                        <div class="chin"></div>
+                                    </div>
+                                    <div class="body">
+                                        <div class="tail"></div>
+                                        <div class="legs"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- animation -->
+                    <div class="quiz_input">
+                        <input type="text" placeholder="정답을 입력해주세요.">
+                    </div>
+                    <div class="quiz_answer">
+                    </div>
+                    <div class="quiz_desc">
+                    </div>
+                </div>
+
+                <div class="quiz_footer">
+                    <button class="quiz_confirm">정답 확인하기</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <!-- main -->
+    <footer id="footer">
+        <a href="mailto:duddls6552@naver.com">duddls6552@naver.com</a>
+    </footer>
+    <!-- footer -->
+
+    <script>
+        // 문제 정보
+        let infoW = {
+            iDate : "2021년 10월",
+            iType : "정보처리 기능사",
+            iNum : "1. ",
+            iQ : "문제입니다.",
+            iA : "0",
+            iDesc : "축하합니다."
+        };
+
+        // 선택자
+        const qW = document.querySelector(".quiz_wrap");
+
+        const qDate = qW.querySelector(".quiz_date");
+        const qType = qW.querySelector(".quiz_type");
+        const qNum = qW.querySelector(".quiz_question em");
+        const qQ = qW.querySelector(".quiz_question span");
+        const qA = qW.querySelector(".quiz_answer");
+        const qDesc = qW.querySelector(".quiz_desc");
+        const qCon = qW.querySelector(".quiz_confirm");
+        const qInput = qW.querySelector(".quiz_input input");
+        const qAni = qW.querySelector(".quiz_animation");
+        
+        // 문서 출력
+        qDate.innerText = infoW.iDate
+        qType.innerText = infoW.iType
+        qNum.innerText = infoW.iNum
+        qQ.innerText = infoW.iQ
+        qA.innerText = infoW.iA
+        qDesc.innerText = infoW.iDesc
+
+        // 숨기기
+        qA.classList.add("none");
+        qDesc.classList.add("none");
+
+        // 확인
+        qCon.addEventListener("click", () => {
+            
+            const userA = qInput.value;
+
+            if(infoW.iA == userA){
+                alert("정답입니다.");
+                qAni.classList.add("like");
+            }else {
+                 alert("오답입니다.");
+                 qAni.classList.add("dislike");
+            }
+            qA.classList.remove("none");
+            qDesc.classList.remove("none");
+            qCon.classList.add("none");
+            qIput.classList.add("none");
+            
+
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃03 - float</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap {
+            width: 100%;
+            background-color: #fff;
+        }
+        #header {
+            width: 1200px;
+            margin: 0 auto;
+            height: 100px;
+            background-color: #B3E5FC;
+        }
+        #nav {
+            width: 1200px;
+            margin: 0 auto;
+            height: 100px;
+            background-color: #81D4FA;
+        }
+        #main {
+            width: 1200px;
+            margin: 0 auto;
+            height: 780px;
+            background-color: #000;
+        }
+        .at_box {
+            float: left;
+        }
+        /* clearFix */
+        .clearFix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #main .aside {
+            width: 30%;
+            height: 780px;
+            background-color: #4FC3F7;
+        }
+        #main .at1 {
+            width: 70%;
+            height: 260px;
+            background-color: #29B6F6;
+        }
+        #main .at2 {
+            width: 70%;
+            height: 260px;
+            background-color: #03A9F4;
+        }
+        #main .at3 {
+            width: 70%;
+            height: 260px;
+            background-color: #039BE5;
+        }
+        #footer {
+            width: 1200px;
+            margin: 0 auto;
+            height: 100px;
+            background-color: #0288D1;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header"></header>
+        <nav id="nav"></nav>
+        <main id="main" class="at_box clearFix">
+            <article class="aside"></article>
+            <article class="at1"></article>
+            <article class="at2"></article>
+            <article class="at3"></article>
+        </main>
+        <footer id="footer"></footer>
+    </div>
+</body>
+</html>

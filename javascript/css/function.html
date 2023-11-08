@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/default.min.css">
+</head>
+<body>
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>
+        //01. 선언적 함수
+        {
+            function func(){
+                document.write("선언함수1<br>");
+            }
+            func();
+        }
+        //02. 익명 함수
+        {
+            const func = function(){
+                document.write("선언함수2<br>");
+            }
+            func();
+        }
+        //03. 매개변수
+        {
+            function func(x){
+                document.write(x);
+            }
+            func("선언함수3<br>");
+        }
+        //04. 리턴함수
+        {
+            function func(){
+                const x = "선언함수4<br>";
+                return x;
+            }
+            document.write(func());
+        }
+        //05. 매개+리턴 함수
+        {
+            function func(x){
+                return x;
+            }
+            document.write("선언 함수5<br>");
+        }
+        //06. 화살표 선언적 함수
+        {
+            func = () => {
+                document.write("선언함수6<br>");
+            }
+            func();
+        }
+        //07. 화살표 익명함수
+        {
+            const func = () => {
+                document.write("선언함수7<br>");
+            }
+            func();
+        }
+        //08. 화살표 매개변수
+        {
+            func = (x) => {
+                document.write(x);
+            }
+            func("선언함수8<br>");
+        }
+        //09. 화살표 리턴함수
+        {
+            func = () => {
+                const x = "선언함수9<br>"
+                return x;
+            }
+            document.write(func());
+        }
+        //10. 화살표 익명+매개+리턴
+        {
+            const func = (x) => {
+                return x;
+            }
+            document.write("선언 함수10<br>");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+.blog__layout {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blog__contents {
+    width: calc(100% - 340px);
+}
+
+.blog__aside {
+    width: 300px;
+    height: 500px;
+    background: rgba(238, 238, 238, 0.314)000;
+}
+
+/* 블로그 사진 크기 */
+.blog__card .card__inner>div figure img {
+    width: 295px;
+    height: 190px;
+    object-fit: cover;
+}
+
+/* blog__intro */
+
+/* blog__write */
+.blog__write {
+    width: 100%;
+    padding: 80px 0;
+}
+
+.blog__write select {
+    width: 200px;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: var(--black300);
+}
+
+.blog__write input {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    color: var(--black300);
+}
+
+.blog__write textarea {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ccc;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    resize: none;
+    color: var(--black300);
+    font-weight: 300;
+}
+
+.blog__write .file {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.blog__write .file input {
+    border: 0;
+    padding: 0;
+}
+
+.blog__write .file p {
+    color: var(--primary-color100);
+    font-size: 0.85rem;
+}
+
+.blog__write .btn {
+    text-align: right;
+}
+
+.ck-editor__editable {
+    height: 400px;
+    margin-bottom: 10px;
+}
+
+.blog__category h3 {
+    padding: 10px;
+    border-top: 2px solid var(--mainLine);
+    border-bottom: 1px solid var(--mainLine);
+}
+
+.blog__category ul {
+    padding: 20px;
+}
+
+.blog__category li {
+    list-style-type: circle;
+}
+
+.blog__index {
+    border-top: 1px solid var(--mainLine);
+    border-bottom: 1px solid var(--mainLine);
+    padding: 30px 0;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* blog__comment */
+
+.blog__comment {
+    padding: 100px 0;
+
+}
+.blog__comment h4 {
+    width: 100%;
+    border-top: 2px solid var(--black);
+    border-bottom: 1px dashed var(--black);
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.comment__view {
+    position: relative;
+    margin-bottom: 20px;
+}
+.comment__view .avata {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url(../face/Cute.svg);
+    background-size: cover;
+    border: 2px solid var(--black);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.comment__view:nth-child(even) .avata {
+    left: auto;
+    right: 0;
+    transform: rotateY(180deg);
+}
+.comment__view:nth-child(even) .text {
+    text-align: right;
+}
+.comment__view:nth-child(even) .text p {
+    border-radius: 10px 0 10px 10px;
+    text-align: left;
+}
+
+.comment__view:nth-child(2) .avata {
+    background-image: url(../face/Awe.svg);
+}
+.comment__view:nth-child(3) .avata {
+    background-image: url(../face/Calm.svg);
+}
+.comment__view:nth-child(4) .avata {
+    background-image: url(../face/Hectic.svg);
+}
+.comment__view:nth-child(5) .avata {
+    background-image: url(../face/Eating\ Happy.svg);
+}
+
+.comment__view .text {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+.comment__view .text > span {
+    display: block;
+    font-size: 14px;
+    color: var(--black300);
+}
+.comment__view .text p {
+    background-color: #f3f0f0;
+    padding: 10px;
+    border-radius: 0 10px 10px 10px;
+    display: inline-block;
+    margin-top: 4px;
+}
+.comment__view .text a {
+    text-decoration: underline;
+    text-underline-position: under;
+    transition: 0.2s;
+}
+.comment__view .text a:hover {
+    color: var(--black);
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.comment__input {
+    margin-top: 50px;
+    padding-top: 50px;
+    border-top: 1px dashed #000;
+}
+.comment__input fieldset {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.comment__input #commentName {
+    width: 49.5%;
+}
+.comment__input #commentPass {
+    width: 49.5%;
+}
+.comment__input #commentWrite {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+#popupDelete {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.comment__delete {
+    width: 400px;
+    height: 400px;
+    background-color: #eee;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border: 1px solid var(--black);
+}
+.comment__delete h4 {
+    margin-bottom: 10px;
+}
+.comment__delete input {
+    border: 1px solid var(--black300);
+    padding: 1rem;
+    width: 100%;
+    font-size: 1rem;
+}
+.comment__delete p {
+    margin-top: 10px;
+    color: var(--black300);
+}
+.comment__delete .btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.comment__delete .btn button {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+
+#popupModify {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.comment__modify {
+    width: 400px;
+    height: 400px;
+    background-color: #eee;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border: 1px solid var(--black);
+}
+.comment__modify h4 {
+    margin-bottom: 10px;
+}
+.comment__modify textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    resize: none;
+}
+.comment__modify input {
+    border: 1px solid var(--black300);
+    padding: 1rem;
+    width: 100%;
+    font-size: 1rem;
+}
+.comment__modify p {
+    margin-top: 10px;
+    color: var(--black300);
+}
+.comment__modify .btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.comment__modify .btn button {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 5px 20px;
+    cursor: pointer;
+}

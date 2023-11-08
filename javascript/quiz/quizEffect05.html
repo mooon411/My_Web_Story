@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 이펙트05</title>
+
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <h1>
+            <a href="../index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quizEffect01.html">1</a></li>
+                <li><a href="quizEffect02.html">2</a></li>
+                <li><a href="quizEffect03.html">3</a></li>
+                <li><a href="quizEffect04.html">4</a></li>
+                <li class="active"><a href="quizEffect05.html">5</a></li>
+                <li><a href="quizEffect06.html">6</a></li>
+                <li><a href="quizEffect07.html">7</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz_wrap"></div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:webstoryboy@naver.com">webstoryboy@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <div class="modal_wrap">
+        <div class="modal_btn">소스보기</div>
+        <div class="modal_cont">
+            <div class="modal_box">
+                <div class="title">제목</div>
+                <div class="cont">
+<pre><code class="lenguage-js">
+
+</code></pre>
+                </div>
+            </div>
+            <div class="modal_close">
+                <svg width="18" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path d="M12.5 12.5L3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+    <script>
+        // 선택자
+        const quizWrap = document.querySelector(".quiz_wrap");
+
+        // 문제 정보
+        const quizInfo = [
+            {
+                infoDate: "2006년 5회",
+                infoType: "정보처리 기능사",
+                infoQuestion: "이항(binary) 연산에 해당하는 것은?",
+                infoChoice: ["COMPLEMENT", "AND", "ROTATE", "SHIFT"],
+                infoAnswer: "2",
+                infoDesc: "단항연산 : ROTATE, SHIFT, MOVE, NOT(COMPLEMENT)"
+            }, {
+                infoDate: "2006년 5회",
+                infoType: "정보처리 기능사",
+                infoQuestion: "프로그램이 컴퓨터의 기종에 관계없이 수행될 수 있는 성질을 의미하는 것은?",
+                infoChoice: [
+                    "가용성",
+                    "신뢰성",
+                    "호환성",
+                    "안전성"
+                ],
+                infoAnswer: "3",
+                infoDesc: "컴퓨터의 기종에 관계없이 동작하므로 호환성입니다. 호환성이란 까스활명수, 까스명수, 베아제등 이름은 틀리지만 소화제의 기능을 하는것처럼 기종에 관계없이 동작할수 있는 것들을 말합니다."
+            }, {
+                infoDate: "2006년 5회",
+                infoType: "정보처리 기능사",
+                infoQuestion: "제어장치가 앞의 명령 실행을 완료한 후, 다음에 실행 할 명령을 기억장치로부터 가져오는 동작을 완료할 때까지의 주기를 무엇이라고 하는가?",
+                infoChoice: [
+                    "fetch cycle",
+                    "transfer cycle",
+                    "search time",
+                    "run time"
+                ],
+                infoAnswer: "1",
+                infoDesc: "명령어를 가지고 오는것을 fetch cycle 이라고 합니다."
+            }
+        ];
+
+        let currentIndex = 0; //현재 문제 변수 값
+
+        // 문제 출력
+        const updataQuiz = (index) => {
+            let quizWrapTag = `
+            <div class="quiz">
+                <div class="quiz_header">${quizInfo[index].infoDate} ${quizInfo[index].infoType}</div>
+                <div class="quiz_main">
+                    <div class="quiz_question">${index+1}. ${quizInfo[index].infoQuestion}</div>
+                    <div class="quiz_choice">
+                        <label for="choice1-${index}">
+                            <input type="radio"  id="choice1-${index}" name="choice" value="1">
+                            <span>${quizInfo[index].infoChoice[0]}</span>
+                        </label>
+                        <label for="choice2-${index}">
+                            <input type="radio"  id="choice2-${index}" name="choice" value="2">
+                            <span>${quizInfo[index].infoChoice[1]}</span>
+                        </label>
+                        <label for="choice3-${index}">
+                            <input type="radio"  id="choice3-${index}" name="choice" value="3">
+                            <span>${quizInfo[index].infoChoice[2]}</span>
+                        </label>
+                        <label for="choice4-${index}">
+                            <input type="radio"  id="choice4-${index}" name="choice" value="4">
+                            <span>${quizInfo[index].infoChoice[3]}</span>
+                        </label>
+                    </div>
+                    <div class="quiz_answer none">
+                        ${quizInfo[index].infoAnswer}
+                    </div>
+                    <div class="quiz_desc none">
+                        ${quizInfo[index].infoDesc}
+                    </div>
+                </div>
+                <div class="quiz_footer">
+                    <button class="quiz_confirm">정답 확인하기</button>
+                    <button class="quiz_next none">다음 문제</button>
+                </div>
+            </div>
+            `;
+            quizWrap.innerHTML = quizWrapTag;
+
+            // 선택자
+            const quizConfirm = quizWrap.querySelector(".quiz_confirm");
+            const quizNext = quizWrap.querySelector(".quiz_next");
+
+            // 정답 확인 버튼
+            quizConfirm.addEventListener("click", () => {
+                checkAnswer();
+                quizConfirm.classList.add("none"); //정답 삭제
+                quizNext.classList.remove("none"); // 다음 추가
+            });
+
+            // 다음 문제 버튼
+            quizNext.addEventListener("click", () => {
+                if(currentIndex < quizInfo.length -1){
+                    quizNext.classList.add("none"); // 다음 추가
+                    quizConfirm.classList.remove("none"); //정답 삭제
+                    currentIndex++; //번호 추가
+                    updataQuiz(currentIndex); //퀴즈 반영
+                }else {
+                    alert("퀴즈가 종료되었습니다.");
+                }
+                //답 안골랐을때 나오는거 숙제
+                
+            });
+            
+        }
+
+        // 정답 확인
+        const checkAnswer = () => {
+            const selectedCoice = quizWrap.querySelector("input[name='choice']:checked");
+            
+            if(!selectedCoice) {
+                alert("답을 선택하세요");
+            }
+            
+            
+            const userAnswer = selectedCoice.value; //사용자가 클릭한 정답
+            const correctAnswer = quizInfo[currentIndex].infoAnswer; //정답지의 정답
+            const quizElement = quizWrap.querySelector(".quiz");
+
+            const descElement = quizWrap.querySelector(".quiz_desc");
+            const answerElement = quizWrap.querySelector(".quiz_answer");
+
+            if(userAnswer === correctAnswer){
+                quizElement.classList.add("good");
+            }else {
+                quizElement.classList.add("bad");
+                answerElement.classList.remove("none");
+            }
+            descElement.classList.remove("none");
+            
+        };
+
+        // 로드
+        document.addEventListener("DOMContentLoaded", () => {
+            updataQuiz(currentIndex);
+        });
+    </script>
+</body>
+
+</html>
